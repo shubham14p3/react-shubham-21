@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line
 import {Link} from 'react-router-dom'
 class Footer extends Component {
 
@@ -24,6 +25,7 @@ class Footer extends Component {
                         </div>
                               <div className="col-lg-12">
                             <div className="site-list site-list-pdl text-center">
+                            
                             <a href="https://www.facebook.com/shubham14p3" target="_blank" rel="noreferrer noopener" className="bg-s1"><i className="fa fa-facebook" aria-hidden="true" /></a>
                             <a href="https://www.linkedin.com/in/shubham14p3/" target="_blank" rel="noreferrer noopener" className="bg-s2"><i className="fa fa-linkedin" aria-hidden="true" /></a>
                             <a href="https://github.com/shubham14p3" target="_blank" rel="noreferrer noopener" className="bg-s3"><span className="fa fa-github" /></a>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line
 import {Header,Banner, Testimonial, ShapeIcon, About, Specilizing, Portfolio, Education, Footer} from '../layouts/home01/index';
 
 class Home01 extends Component {

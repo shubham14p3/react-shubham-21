@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+// eslint-disable-next-line
 import {Design, NumberCount} from './specilizing/index';
 
 class Specilizing extends Component {
