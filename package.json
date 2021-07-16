@@ -1,5 +1,6 @@
 {
   "name": "react-shubham-21",
+  "homepage" : "https://www.shubhamraj.dev",
   "version": "21.6.11",
   "private": true,
   "dependencies": {
@@ -25,7 +26,6 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
       "not op_mini all"
     ],
     "development": [
