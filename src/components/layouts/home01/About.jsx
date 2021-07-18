@@ -88,7 +88,12 @@ class About extends Component {
                                             <img src={data.images} width="50px" height="50px" alt={data.alt}/>
                                         </div>
                                         <div className="content-inside">
-                                            <h3 className="name"><Link to={data.url}>{data.name}</Link></h3>
+                                            <h3 className="name">
+                                            <a
+                                            href={data.url}
+                                            target="_blank"
+                                            rel="noreferrer noopener"
+                                            >{data.name}</a></h3>
                                             <span className="t-normal">{data.normal}</span>
                                         </div>
                                     </div>    
