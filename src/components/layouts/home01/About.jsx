@@ -9,37 +9,46 @@ class About extends Component {
                 {
                     id: 1,
                     classname: 'profile-link border-corner2 d-flex align-items-center',
-                    images: './images/section/05.png',
-                    alt: 'images',
-                    url:'https://www.facebook.com/shubham14p3',
+                    images: './icon/linkedin.svg',
+                    alt: 'Linkedin',
+                    url:'https://www.linkedin.com/in/shubham14p3/',
                     name: 'Linkedin',
                     normal: 'Get in Touch'
                 },
                 {
                     id: 2,
                     classname: 'profile-link border-corner2 d-flex align-items-center',
-                    images: './images/section/06.png',
-                    alt: 'images',
-                    url:"",
+                    images: './icon/github.svg',
+                    alt: 'Github',
+                    url:"https://github.com/shubham14p3",
                     name: 'Github',
                     normal: 'See My Work'
                 },
                 {
                     id: 3,
                     classname: 'profile-link border-corner2 d-flex align-items-center',
-                    images: './images/section/07.png',
-                    alt: 'images',
-                    url:"",
+                    images: './icon/hackerrank.svg',
+                    alt: 'HackerRank',
+                    url:"https://www.hackerrank.com/shubham14p3?hr_r=1",
                     name: 'HackerRank',
                     normal: 'My skills'
                 },
                 {
                     id: 4,
                     classname: 'profile-link border-corner2 d-flex align-items-center',
-                    images: './images/section/08.png',
-                    alt: 'images',
-                    url:"",
+                    images: './icon/skype.svg',
+                    alt: 'Skype',
+                    url:"https://join.skype.com/invite/UbpHpl5nupqt",
                     name: 'Skype',
+                    normal: 'Connect with me'
+                },
+                {
+                    id: 5,
+                    classname: 'profile-link border-corner2 d-flex align-items-center',
+                    images: './icon/facebook.svg',
+                    alt: 'Facebook',
+                    url:"https://www.facebook.com/shubham14p3/",
+                    name: 'Facebook',
                     normal: 'Connect with me'
                 }
             ]
@@ -76,7 +85,7 @@ class About extends Component {
                                 this.state.profile.map(data => (
                                     <div className={data.classname} key={data.id}>
                                         <div className="featured-post">
-                                            <img src={data.images} alt={data.alt}/>
+                                            <img src={data.images} width="50px" height="50px" alt={data.alt}/>
                                         </div>
                                         <div className="content-inside">
                                             <h3 className="name"><Link to={data.url}>{data.name}</Link></h3>
