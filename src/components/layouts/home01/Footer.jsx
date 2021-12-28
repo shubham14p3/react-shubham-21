@@ -56,7 +56,15 @@ class Footer extends Component {
                     >
                       <i className="fa fa-github" aria-hidden="true" />
                     </a>
-                     </div>
+                    <a
+                    href="https://wa.me/8092766575"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="bg-s1"
+                  >
+                    <i className="fa fa-whatsapp" aria-hidden="true" />
+                  </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -87,7 +95,14 @@ class Footer extends Component {
                   rel="noreferrer noopener"
                 >
                   <i className="fa fa-github" aria-hidden="true" />
-                </a>               
+                </a>
+                <a
+                  href="https://wa.me/8092766575"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="fa fa-whatsapp" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>
