@@ -20,10 +20,10 @@ const Banner = () => {
                 </span>
               </h1>
               <p className="lt-sp03 mg-b60 text-white">
-                Masterful Developer with proficiency in
+                Masterful Developer with proficiency in &nbsp;
                 <span className="color-d4">DEVELOPING</span> Front End UI.
-                <br />Currently working for
-                <span className="color-d4">Capgemini </span>, as a
+                <br />Currently working for &nbsp;
+                <span className="color-d4">Capgemini </span>, as a &nbsp;
                 <span className="color-d4"> React developer </span>.
                 <br />
                 I've worked for MNC like
@@ -31,7 +31,7 @@ const Banner = () => {
                 <br /> helped companies like
                 <span className="color-d4">  Dashclick, Creant Technologies, Alco </span>
                 worldwide.
-                <br /> I have 1.6 years of experience as a developer and love
+                <br /> I have 2.1 years of experience as a developer and love
                 working with <br />
                 React and other hip frameworks.
                 <br /> I design and code simple things, and I love what I do.

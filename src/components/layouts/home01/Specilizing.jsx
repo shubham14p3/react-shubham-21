@@ -16,7 +16,10 @@ class Specilizing extends Component {
                     companyTitle:'Capgemini',
                     title: 'Role: Associate Consultant',
                     date:'Date: May 2021 - current',
-                    text01: '★ Under training....'                        
+                    text01: '★ Worked on Financial Services domain for Abu Dhabi Bank.',                        
+                    text02: '★ Built responsive and global component UIs using a modern technology stack like Reactjs, NextJS, Typescript & other third-party libraries',                        
+                    text03: '★ Performed bug fixes, writing test cases, Identifying innovative ideas and proof of concepts according to project requirements',                        
+                    text04: '★ Collaborated and work hand-in-hand with backend, QA, design and product colleagues to support projects during all phases of delivery',                        
                 },
                 {
                     id: 2,
@@ -66,7 +69,7 @@ class Specilizing extends Component {
                                 {/* <NumberCount /> */}
                                 <div className="btn-contact bg-s1 text-center">
                                     <h4 className="title color-d12">I am Available! Let’s talk.</h4>
-                                    <Link to="#" className="email color-s1 color-d14">shubham14p3@gmail.com</Link>
+                                    <Link to="#" className="email color-s1 color-d14"> <a href="mailto:shubham14p3@gmail.com">shubham14p3@gmail.com</a></Link>
                                 </div>
                             </div>
                             
