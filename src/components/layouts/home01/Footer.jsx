@@ -57,7 +57,7 @@ class Footer extends Component {
                       <i className="fa fa-github" aria-hidden="true" />
                     </a>
                     <a
-                    href="https://wa.me/8092766575"
+                    href="https://wa.me/918092766575"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="bg-s1"
@@ -97,7 +97,7 @@ class Footer extends Component {
                   <i className="fa fa-github" aria-hidden="true" />
                 </a>
                 <a
-                  href="https://wa.me/8092766575"
+                  href="https://wa.me/918092766575"
                   target="_blank"
                   rel="noreferrer noopener"
                 >

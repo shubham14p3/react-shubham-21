@@ -20,7 +20,7 @@ const Header = (props) => {
             <a href="https://github.com/shubham14p3" target="_blank" rel="noreferrer noopener">
               <i className="fa fa-github" aria-hidden="true" />
             </a>
-            <a href="https://wa.me/8092766575" target="_blank" rel="noreferrer noopener" >
+            <a href="https://wa.me/918092766575" target="_blank" rel="noreferrer noopener" >
             <i className="fa fa-whatsapp" aria-hidden="true" />
           </a>
           </div>
