@@ -53,7 +53,7 @@ class Specilizing extends Component {
     render() {
         return (
             <div className="section slide-personal-Intro-third slide-dark bg-white">
-                <section className="specilizing-in s1" id="services">
+                <section className="specilizing-in s1" id="experience">
                     <div className="container">
                         <div className="flat-title">
                             <h2 className="title-section color-d12 animate-element wow delay5 fadeInDown" data-wow-delay="0.5s">I have worked at</h2>
