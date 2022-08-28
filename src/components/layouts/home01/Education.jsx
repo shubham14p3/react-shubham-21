@@ -5,7 +5,7 @@ class Education extends Component {
     render() {
         return (
             <div className="section slide-personal-Intro-fifth slide-dark bg-white">
-                <section className="flat-education flex s1 position-relative" id="resume">
+                <section className="flat-education flex s1 position-relative" id="education">
                     <div className="shape-right"><img src="images/section/16.png" alt="images"/></div>
                     <div className="container">
                         <div className="d-lg-flex">

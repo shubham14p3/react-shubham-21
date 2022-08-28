@@ -6,21 +6,16 @@ const menus = [
     },
     {
         id: 2,
-        tomenu: "#services",
+        tomenu: "#experience",
         namemenu: "Experience"
-    },
-    {
-        // id: 3,
-        // tomenu: "#portfolio",
-        // namemenu: "Projects"
     },{
         id: 3,
-        tomenu: "#resume",
+        tomenu: "#education",
         namemenu: "Education"
     },
     {
         id: 4,
-        tomenu: "#testimonial",
+        tomenu: "#recommendations",
         namemenu: "Recommendations"
     },
     
