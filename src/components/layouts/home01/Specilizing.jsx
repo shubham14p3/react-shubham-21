@@ -42,6 +42,7 @@ class Specilizing extends Component {
           text04:
             "★ Collaborated and work hand-in-hand with backend, QA, design and product colleagues to support projects during all phases of delivery.",
         },
+
         {
           id: 3,
           iconbox:
@@ -64,6 +65,26 @@ class Specilizing extends Component {
         },
         {
           id: 4,
+          iconbox:
+            "iconbox-s1 d-sm-flex justify-content-lg-center align-items-center mgl-iconbox-s1",
+          iconcolor: "iconbox-icon color2 color1",
+          spanicon: "icon-designer",
+          companyTitle: "Minusoft India Pvt Ltd",
+          title: "Role- Trainee (Software Engineer)",
+          date: "Date: August 2019 - May 2020",
+          text01:
+            "★ Developed 3+ Front End apps to analyze and process data for different clients",
+          text02:
+            "★ Ensure applications security and ability to interact with multiple APIs.",
+          text03:
+            "★ Built responsive and global component UIs using a modern technology stack like Reactjs, Next JS & other third-party libraries like Material UI, Formick, Yup etc",
+          text04:
+            '★ Developed and implemented a standalone data extraction "agent" and main-application features for a financial product.',
+          text05:
+            "★ Work closely with app development team including project and product manager, developers, and QA to determine problems, testing methods, and best practices",
+        },
+        {
+          id: 5,
           iconbox:
             "iconbox-s1 d-sm-flex justify-content-lg-end align-items-center mgr-iconbox-s1",
           iconcolor: "iconbox-icon color3",
