@@ -9,19 +9,26 @@ class EducationRight extends Component {
                 {
                     id: 1,
                     timeline: 'timeline-inverted color1',
+                    info: 'Indian Institute of Technology (IIT), Jodhpur(IITJ)',
+                    title: 'M Tech',
+                    text: 'Masters in Engineering with Data Engineering from Indian Institute of Technology (IIT), Jodhpur (IITJ), started in 2024 and currently in progress.'
+                },
+                {
+                    id: 2,
+                    timeline: 'timeline-inverted color1',
                     info: 'C.S.V.T.U',
                     title: 'Bachelors Degree',
                     text: 'Bachelor in Engineering with Computer Science Engineering from Bhilai Institute of Technology in year 2014-2018.'
                 },
                 {
-                    id: 2,
+                    id: 3,
                     timeline: 'timeline-inverted color2',
                     info: 'C.B.S.E.',
                     title: 'Intermediate',
                     text: 'Intermediate from Vidya Bharati Chinmaya Vidyalaya under C.B.S.E. in year 2014.'
                 },
                 {
-                    id: 3,
+                    id: 4,
                     timeline: 'timeline-inverted color3',
                     info: 'C.B.S.E.',
                     title: 'Matriculation',

@@ -1,23 +1,51 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom' 
-class Design extends Component {
-    render() {
-        return (
-            <div className="col-lg-9 animate-element wow delay5 fadeInUp" data-wow-delay="0.5s">
-                <div className={this.props.data.iconbox}>
-                    <div className={this.props.data.iconcolor}><span className={this.props.data.spanicon} /></div>
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Design = ({ data }) => {
+    // Function to format text between ★ and :
+    const formatText = (text) => {
+        if (!text) {
+            return null; // Return null if text is undefined or null
+        }
+
+        const regex = /★(.*?)\:/g; // Regular expression to match text between ★ and :
+        const parts = text.split(regex); // Split text based on the regex
+
+        if (!parts || parts.length < 2) {
+            return text; // Return original text if no match found or parts are insufficient
+        }
+
+        return parts.map((part, index) => {
+            if (index % 2 === 1) {
+                // Bold the text between ★ and :
+                return <b key={index}>{part}</b>;
+            } else {
+                // Return non-bolded text
+                return part;
+            }
+        });
+    };
+
+    return (
+        <div className="col-lg-6 col-md-6 col-sm-12 mb-4 animate-element wow delay5 fadeInUp" data-wow-delay="0.5s">
+            <div className="card h-100">
+                <div className={`card-body ${data.iconbox}`}>
+                    <div className={data.iconcolor}><span className={data.spanicon} /></div>
                     <div className="ct-is">
-                        <h3 className="title mg-b21"><Link to="#">{this.props.data.companyTitle}</Link></h3>
-                        <h4 className="title "><b><i>{this.props.data.title}</i></b></h4>
-                        {this.props.data.date}
-                        <p className="lt-sp01">
-                            {this.props.data.text01}<br />{this.props.data.text02}<br />{this.props.data.text03}<br />{this.props.data.text04}
+                        <h3 className="card-title title mg-b21"><Link to="#">{data.companyTitle}</Link></h3>
+                        <h5 className="card-subtitle title mb-2"><b><i>{data.title}</i></b></h5>
+                        <p className="card-text lt-sp01" style={{ textAlign: 'justify' }}>
+                            {formatText(data.date)}<br />
+                            {formatText(data.text01)}<br />
+                            {formatText(data.text02)}<br />
+                            {formatText(data.text03)}<br />
+                            {formatText(data.text04)}
                         </p>
                     </div>
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default Design;

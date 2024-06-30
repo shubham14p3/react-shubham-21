@@ -68,7 +68,7 @@ const Home = () => {
             </section>
           </div>
           <Specilizing />
-          <Portfolio />
+          {/* <Portfolio /> */}
           <Education />
         </div>
 

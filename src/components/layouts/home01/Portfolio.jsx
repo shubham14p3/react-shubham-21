@@ -10,7 +10,7 @@ class Portfolio extends Component {
                         <div className="text-portfolio">Github</div>
                     </div>
                     <div className="container d-lg-flex">
-                        <ContainerLeft />
+                        <ContainerLeft /> 
                         <ContainerRight />
                     </div>
                 </section>
