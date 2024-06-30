@@ -19,23 +19,23 @@ const Banner = () => {
                   <b>Engineer!</b>
                 </span>
               </h1>
-              <p className="lt-sp03 mg-b60 text-white">
-                Masterful Developer with proficiency in &nbsp;
-                <span className="color-d4">DEVELOPING</span> Front End UI.
-                <br />Currently working for &nbsp;
-                <span className="color-d4">Capgemini </span>, as a &nbsp;
-                <span className="color-d4"> React developer </span>.
-                <br />
-                I've worked for MNC like
-                <span className="color-d4"> Nagravision , Gammastack </span>,
-                <br /> helped companies like
-                <span className="color-d4">  Dashclick, Creant Technologies, Alco </span>
-                worldwide.
-                <br /> I have 2.1 years of experience as a developer and love
-                working with <br />
-                React and other hip frameworks.
-                <br /> I design and code simple things, and I love what I do.
-              </p>
+              <bold>
+                <p className="lt-sp03 mg-b60 text-white">Masterful Developer with proficiency in  &nbsp;
+                  <span className="color-d4">DEVELOPING</span> web application (Front End Heavly).
+                  <br />Currently working for &nbsp;
+                  <span className="color-d4">Capgemini </span>, as a &nbsp;
+                  <span className="color-d4"> <b>CONSULTANT</b> </span>.
+                  <br />
+                  I've worked for MNCs like
+                  <span className="color-d4"> NAGRAVISION </span>,
+                  <span className="color-d4"> MINUSOFT </span> and
+                  <span className="color-d4"> GAMMASTACK </span>.
+                  <br />
+                  I have 5+ years of extensive experience as a developer, specializing in React and other
+                  <br />  cutting-edge frameworks.
+                  <br /> I design and code elegant solutions, and I am deeply passionate about my craft.
+                </p>
+              </bold>
             </div>
             <div
               className="animate-element wow delay5 fadeInUp"
