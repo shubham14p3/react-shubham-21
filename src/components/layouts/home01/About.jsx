@@ -92,7 +92,7 @@ const About = () => {
                             <h4 className="sub-title mg-b22">About Me</h4>
                             <h2 className="title-section mg-b26 color-d12">Hi, I am Shubham <span className="color-d4">,</span></h2>
                             <p style={{ textAlign: 'justify' }}>
-                                I am a seasoned React developer with over 5 years of expertise, currently contributing to frontend initiatives at Capgemini. My career journey includes pivotal roles at Nagravision and Gammastack, as well as collaborations with companies like Dashclick and Creant Technologies.
+                                I am a seasoned React developer with over 4.5+ years of expertise, currently contributing to frontend initiatives at Capgemini. My career journey includes pivotal roles at Nagravision and Gammastack.
                                 <br /><br /> I excel in crafting pixel-perfect user interfaces using React.js, Redux for state management, and integrating cutting-edge technologies such as Next.js and Material-UI for scalable applications.
                                 <br /><br /> At Capgemini, I lead frontend development for Discover Bank, driving high-performance applications in the Financial Services domain and achieving heightened client satisfaction.
                                 <br /><br />  My proficiency extends to optimizing React components for cross-browser compatibility and performance, conducting rigorous code reviews, and implementing Agile methodologies to enhance team productivity and project outcomes.

@@ -27,8 +27,7 @@ const Banner = () => {
                   <span className="color-d4"> <b>CONSULTANT</b> </span>.
                   <br />
                   I've worked for MNCs like
-                  <span className="color-d4"> NAGRAVISION </span>,
-                  <span className="color-d4"> MINUSOFT </span> and
+                  <span className="color-d4"> NAGRAVISION </span> and
                   <span className="color-d4"> GAMMASTACK </span>.
                   <br />
                   I have 5+ years of extensive experience as a developer, specializing in React and other

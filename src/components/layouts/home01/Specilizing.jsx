@@ -51,18 +51,6 @@ class Specilizing extends Component {
                 {
                     id: 4,
                     iconbox: 'iconbox-s1 d-sm-flex justify-content-lg-end align-items-center mgr-iconbox-s1',
-                    iconcolor: 'iconbox-icon color2',
-                    spanicon: 'icon-brand',
-                    companyTitle:'Minusoft India Pvt. Ltd., Jharkhand',
-                    title: 'Role- SOFTWARE DEVELOPER',
-                    date:'Date: August 2019 – May 2020',
-                    text01: '★ Frontend Development: Built applications across various platforms using React and Redux, contributing significantly to web-based software development.',
-                    text02: '★ Framework Expertise: Gained hands-on expertise in Bootstrap and Foundation, enhancing user interfaces with responsive design.',
-                    text03: '★ Continuous Improvement: Actively involved in the enhancement and operation of web-based software, fostering a culture of continuous improvement.',
-                },
-                {
-                    id: 5,
-                    iconbox: 'iconbox-s1 d-sm-flex justify-content-lg-end align-items-center mgr-iconbox-s1',
                     iconcolor: 'iconbox-icon color3',
                     spanicon: 'icon-designer',
                     companyTitle:'Nagravision India Pvt. Ltd., Bangalore',
