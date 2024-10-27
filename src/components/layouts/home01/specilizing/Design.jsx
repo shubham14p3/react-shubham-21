@@ -5,11 +5,11 @@ const Design = ({ data }) => {
     // Function to format text between ★ and :
     const formatText = (text) => {
         if (!text) {
-            return null; // Return null if text is undefined or null
+            return null;
         }
 
-        const regex = /★(.*?)\:/g; // Regular expression to match text between ★ and :
-        const parts = text.split(regex); // Split text based on the regex
+        const regex = /★(.*?)\:/g;
+        const parts = text.split(regex);
 
         if (!parts || parts.length < 2) {
             return text; // Return original text if no match found or parts are insufficient

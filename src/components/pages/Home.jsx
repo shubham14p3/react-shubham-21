@@ -7,7 +7,6 @@ import {
   ShapeIcon,
   About,
   Specilizing,
-  Portfolio,
   Education,
   Footer,
 } from "../layouts/home01/index";
