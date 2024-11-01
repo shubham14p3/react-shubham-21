@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 // Lazy load components
 const Home = lazy(() => import("./components/pages/Home"));
 const Blog = lazy(() => import("./components/pages/Blog"));
-const BlogSingle = lazy(() => import("./components/pages/BlogSingle"));
+const Marriage = lazy(() => import("./components/pages/Marriage"));
 
 // Loader component with unique, fun styling
 function Loader() {
@@ -58,7 +58,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog-single" element={<BlogSingle />} />
+        <Route path="/marriage" element={<Marriage />} />
       </Routes>
     </Suspense>
   );
