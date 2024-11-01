@@ -1,93 +1,237 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import img1 from '../../../assets/images/pp/1.jpg';
+import img2 from '../../../assets/images/pp/2.jpg';
+import img3 from '../../../assets/images/pp/3.jpg';
+import img4 from '../../../assets/images/pp/4.jpg';
+import img5 from '../../../assets/images/pp/5.jpg';
+import img6 from '../../../assets/images/pp/6.jpg';
+import img7 from '../../../assets/images/pp/7.jpg';
+import img8 from '../../../assets/images/pp/8.jpg';
+import img9 from '../../../assets/images/pp/9.jpg';
+import img10 from '../../../assets/images/pp/10.jpg';
+import img11 from '../../../assets/images/pp/11.jpg';
+import img12 from '../../../assets/images/pp/12.jpg';
+import img13 from '../../../assets/images/pp/13.jpg';
+import img14 from '../../../assets/images/pp/14.jpg';
+import img15 from '../../../assets/images/pp/15.jpg';
+
 class Sidebar extends Component {
-    render() {
+    // Custom Previous Arrow
+    PrevArrow = (props) => {
+        const { onClick } = props;
         return (
-            <div className="sidebar">
-                <div className="widget widget-search">
-                    <form action="#" className="form-search position-relative">
-                        <input type="text" className="search" placeholder="What are you looking for?" />
-                        <button className="btn-search"><i className="fa fa-search" aria-hidden="true" /></button>
-                    </form>
-                </div>
-                <div className="widget widget-follow-me">
-                    <h3 className="widget-title">Follow me</h3>
-                    <div className="social-network">
-                        <div className="d-flex justify-content-between">
-                            <div className="iconbox-s3 color-s1">
-                                <div className="iconbox-icon"><i className="fa fa-behance" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">2.5k</span>
-                            </div>
-                            <div className="iconbox-s3 color-s2">
-                                <div className="iconbox-icon"><i className="fa fa-behance" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">3.2k</span>
-                            </div>
-                            <div className="iconbox-s3 color-s3">
-                                <div className="iconbox-icon"><i className="fa fa-twitter" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">10k</span>
-                            </div>
+            <div
+                onClick={onClick}
+                style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "-25px",
+                    width: "30px",
+                    height: "30px",
+                    border: "1px solid #333",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    borderRadius: "50%",
+                    transform: "translateY(-50%)",
+                    fontSize: "18px",
+                    color: "#333",
+                    zIndex: "1",
+                }}
+            >
+                &#60;
+            </div>
+        );
+    };
+
+    // Custom Next Arrow
+    NextArrow = (props) => {
+        const { onClick } = props;
+        return (
+            <div
+                onClick={onClick}
+                style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: "-25px",
+                    width: "30px",
+                    height: "30px",
+                    border: "1px solid #333",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    borderRadius: "50%",
+                    transform: "translateY(-50%)",
+                    fontSize: "18px",
+                    color: "#333",
+                    zIndex: "1",
+                }}
+            >
+                &#62;
+            </div>
+        );
+    };
+
+    render() {
+        // Slider settings
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            vertical: true, // Enable vertical sliding
+            nextArrow: <this.NextArrow />,
+            prevArrow: <this.PrevArrow />,
+            responsive: [
+                {
+                    breakpoint: 768, // Mobile view breakpoint
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        vertical: false, // Horizontal sliding for mobile view
+                    },
+                },
+            ],
+        };
+
+        return (
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "20px",
+                textAlign: "center",
+            }}>
+                <div className="sidebar" style={{
+                    padding: "20px",
+                    maxWidth: "300px",
+                    width: "100%",
+                }}>
+                    {/* Title */}
+                    <h3 style={{
+                        fontSize: "1.5rem",
+                        marginBottom: "15px",
+                        color: "#333",
+                        fontWeight: "600"
+                    }}>
+                        Photo Gallery
+                    </h3>
+
+                    {/* Slider */}
+                    <Slider {...settings}>
+                        <div>
+                            <img
+                                src={img1}
+                                alt="Slide 1"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
                         </div>
-                        <div className="d-flex justify-content-between">
-                            <div className="iconbox-s3 color-s4">
-                                <div className="iconbox-icon"><i className="fa fa-facebook" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">2.5k</span>
-                            </div>
-                            <div className="iconbox-s3 color-s5">
-                                <div className="iconbox-icon"><i className="fa fa-instagram" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">3.2k</span>
-                            </div>
-                            <div className="iconbox-s3 color-s1">
-                                <div className="iconbox-icon"><i className="fa fa-instagram" aria-hidden="true" /></div>
-                                <span className="likes lt-sp16 f-w500 color-d9">10k</span>
-                            </div>
+                        <div>
+                            <img
+                                src={img2}
+                                alt="Slide 2"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
                         </div>
-                    </div>
-                </div>
-                <div className="widget widget-popular-post">
-                    <h3 className="widget-title">Popular Post</h3>
-                    <ul className="popular-post-list">
-                        <li>
-                            <div className="d-flex">
-                                <span className="order-number">1</span><Link to="#">How to improve your color sense</Link>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="d-flex">
-                                <span className="order-number">2</span><Link to="#" className="active">Most beautiful thing on our design platfrom.</Link>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="d-flex">
-                                <span className="order-number">3</span><Link to="#">Typography tips</Link>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="d-flex">
-                                <span className="order-number">4</span><Link to="#">UX Design practices: how to make web interface!</Link>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="d-flex">
-                                <span className="order-number">5</span><Link to="#">Death of Graphic Design</Link>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div className="widget widget-categories">
-                    <h3 className="widget-title">Categories</h3>
-                    <ul className="categories-list">
-                        <li><Link to="#">All</Link><span>(53)</span></li>
-                        <li><Link to="#">Design</Link><span>(10)</span></li>
-                        <li><Link to="#">User experience</Link><span>(7)</span></li>
-                        <li><Link to="#">Typography</Link><span>(6)</span></li>
-                        <li><Link to="#">Color</Link><span>(5)</span></li>
-                        <li><Link to="#">Freelancing</Link><span>(9)</span></li>
-                    </ul>
-                </div>
-                <div className="widget widget-download text-center">
-                    <div className="fl-btn btn-hv-common">
-                        <Link to="#" className="btn-inner text-white">Download <br />Free Mockup</Link>
-                    </div>
+                        <div>
+                            <img
+                                src={img3}
+                                alt="Slide 3"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img4}
+                                alt="Slide 4"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img5}
+                                alt="Slide 5"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img6}
+                                alt="Slide 6"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img7}
+                                alt="Slide 7"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img8}
+                                alt="Slide 8"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img9}
+                                alt="Slide 9"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img10}
+                                alt="Slide 10"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img11}
+                                alt="Slide 11"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img12}
+                                alt="Slide 12"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img13}
+                                alt="Slide 13"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img14}
+                                alt="Slide 14"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src={img15}
+                                alt="Slide 15"
+                                style={{ width: "100%", borderRadius: "10px" }}
+                            />
+                        </div>
+                    </Slider>
                 </div>
             </div>
         );

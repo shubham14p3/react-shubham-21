@@ -78,7 +78,7 @@ const Marriage = () => {
                 <div className="container d-lg-flex">
                     <ContentSingle />
                     {/* Uncomment if Sidebar needed */}
-                    {/* <Sidebar /> */}
+                    <Sidebar />
                 </div>
             </div>
             <Footer />
