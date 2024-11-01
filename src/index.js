@@ -4,7 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
 // Importing CSS files from the assets directory
-import "./assets/stylesheet/bootstrap.css"; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import "./assets/stylesheet/font-awesome.css";
 import "./assets/stylesheet/owl.theme.default.min.css";
 import "./assets/stylesheet/owl.carousel.min.css";

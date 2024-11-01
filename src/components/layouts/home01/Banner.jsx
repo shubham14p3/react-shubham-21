@@ -1,59 +1,195 @@
-import React from "react";
-// eslint-disable-next-line
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import menus from "../menus";
 
-const Banner = () => {
+const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false); // Close the menu after scrolling
+  };
+
+  const handleDownload = (url) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = url.split("/").pop(); // Use the file name from the URL
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="section slide-personal-Intro-first">
-      <section className="banner-section s1" id="home">
-        <div className="container">
-          <div className="content-text position-relative">
-            <div
-              className="animate-element wow delay5 fadeInDown"
-              data-wow-delay="0.3s"
-            >
-              <h1 className="cd-headline clip is-full-width title mg-b29 text-white">
-                <span>Software </span>
-                <span className="cd-words-wrapper color-d4">
-                  <b className="is-visible">Developer!</b>
-                  <b>Engineer!</b>
-                </span>
-              </h1>
-              <bold>
-                <p className="lt-sp03 mg-b60 text-white">Masterful Developer with proficiency in  &nbsp;
-                  <span className="color-d4">DEVELOPING</span> web application (Front End Heavly).
-                  <br />Currently working for &nbsp;
-                  <span className="color-d4">Capgemini </span>, as a &nbsp;
-                  <span className="color-d4"> <b>CONSULTANT</b> </span>.
-                  <br />
-                  I've worked for MNCs like
-                  <span className="color-d4"> NAGRAVISION </span> and
-                  <span className="color-d4"> GAMMASTACK </span>.
-                  <br />
-                  I have 5+ years of extensive experience as a developer, specializing in React and other
-                  <br />  cutting-edge frameworks.
-                  <br /> I design and code elegant solutions, and I am deeply passionate about my craft.
-                </p>
-              </bold>
-            </div>
-            <div
-              className="animate-element wow delay5 fadeInUp"
-              data-wow-delay="0.5s"
-            >
-              <div className="fl-btn btn-general btn-hv-border">
-                <a
-                  href="/resume/resume.pdf"
-                  className="border-corner5 f-w500 lt-sp095 text-white "
-                >
-                  Download Resume
-                </a>
-              </div>
+    <header id="header" className="header header-style1" style={{ backgroundColor: "black" }}>
+      <div className="container">
+        <div className="flex-header d-flex justify-content-between align-items-center">
+          <div className="socials-list-hd s1 hv1">
+            <a href="https://www.facebook.com/shubham14p3" target="_blank" rel="noreferrer noopener">
+              <i className="fa fa-facebook" aria-hidden="true" />
+            </a>
+            <a href="https://www.linkedin.com/in/shubham14p3/" target="_blank" rel="noreferrer noopener">
+              <i className="fa fa-linkedin" aria-hidden="true" />
+            </a>
+            <a href="https://github.com/shubham14p3" target="_blank" rel="noreferrer noopener">
+              <i className="fa fa-github" aria-hidden="true" />
+            </a>
+            <a href="https://wa.me/918092766575" target="_blank" rel="noreferrer noopener">
+              <i className="fa fa-whatsapp" aria-hidden="true" />
+            </a>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="content-menu d-lg-flex">
+            <div className="nav-wrap">
+              <nav id="mainnav" className="mainnav">
+                <ul className="menu ace-responsive-menu" data-menu-style="horizontal">
+                  {menus.map((menu) => (
+                    <li key={menu.id}>
+                      {menu.external && menu.download ? (
+                        <a
+                          href={menu.tomenu}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleDownload(menu.tomenu);
+                          }}
+                        >
+                          {menu.namemenu}
+                        </a>
+                      ) : menu.external ? (
+                        <a href={menu.tomenu} target="_blank" rel="noopener noreferrer">
+                          {menu.namemenu}
+                        </a>
+                      ) : (
+                        <a
+                          href={menu.tomenu}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection(menu.tomenu);
+                          }}
+                          className="click-model"
+                        >
+                          {menu.namemenu}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <div dir="rtl" className="btn-menu mobile-header__menu-button" onClick={toggleMobileMenu}>
+            <div className="line line-1" />
+            <div className="line line-2" />
+            <div className="line line-3" />
+            <div className="line line-4" />
+          </div>
         </div>
-      </section>
-    </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <div className="mobile-dropdown-menu">
+            <ul>
+              {menus.map((menu) => (
+                <li key={menu.id}>
+                  {menu.external && menu.download ? (
+                    <a
+                      href={menu.tomenu}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDownload(menu.tomenu);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="btn-inner border-corner2 lt-sp08 text-white"
+                    >
+                      {menu.namemenu}
+                    </a>
+                  ) : menu.external ? (
+                    <a
+                      href={menu.tomenu}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="btn-inner border-corner2 lt-sp08 text-white"
+                    >
+                      {menu.namemenu}
+                    </a>
+                  ) : (
+                    <a
+                      href={menu.tomenu}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(menu.tomenu);
+                      }}
+                      className="btn-inner border-corner2 lt-sp08 text-white"
+                    >
+                      {menu.namemenu}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {/* Inline CSS for the dropdown */}
+      <style>
+        {`
+          .mobile-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            z-index: 999;
+          }
+
+          .mobile-dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+          }
+
+          .mobile-dropdown-menu ul li {
+            padding: 10px 0;
+          }
+
+          .mobile-dropdown-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+          }
+
+          .mobile-dropdown-menu ul li a:hover {
+            color: #f1c40f;
+          }
+
+          /* Only show dropdown on mobile */
+          @media (max-width: 992px) {
+            .mobile-dropdown-menu {
+              display: block;
+            }
+
+            .content-menu {
+              display: none;
+            }
+          }
+        `}
+      </style>
+    </header>
   );
 };
 
-export default Banner;
+export default Header;

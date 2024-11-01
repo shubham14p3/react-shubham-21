@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import testimonialImg1 from '../../../assets/images/testimonial/001.jpg';
+import testimonialImg2 from '../../../assets/images/testimonial/002.jpg';
+import testimonialImg3 from '../../../assets/images/testimonial/003.jpg';
+import testimonialImg4 from '../../../assets/images/testimonial/004.jpg';
 class Testimonial extends Component {
+    // import ""
     constructor(props) {
         super(props);
         this.state = {
             testimonial: [
                 {
                     id: 1,
-                    img: './images/testimonial/001.jpg',
+                    img: testimonialImg1,
                     alt: 'images',
                     text01: 'It was a pleasure to work together with Shubham on many college projects,  ',
                     text02: 'who is an outstanding Full Stack Developer at GAMMASTACK. Thanks to interpersonal ',
@@ -24,7 +28,7 @@ class Testimonial extends Component {
 
                 {
                     id: 2,
-                    img: './images/testimonial/002.jpg',
+                    img: testimonialImg2,
                     alt: 'images',
                     text01: 'Shubham has been a good teammate at microverse, he doesnot hesitate to help ',
                     text02: 'people when having doubts or questions. Aside from that, he is also a good software developer. ',
@@ -35,7 +39,7 @@ class Testimonial extends Component {
                 },
                 {
                     id: 3,
-                    img: './images/testimonial/003.jpg',
+                    img: testimonialImg3,
                     alt: 'images',
                     text01: 'So far a few people have had the opportunity of working with a helpful ',
                     text02: 'and efficient team mate - but I had the chance when I partnered with ',
@@ -48,7 +52,7 @@ class Testimonial extends Component {
                 },
                 {
                     id: 4,
-                    img: './images/testimonial/004.jpg',
+                    img: testimonialImg4,
                     alt: 'images',
                     text01: 'We got to know with Raj when he joined Microverse, I was assigned to be his mentor ',
                     text02: 'but we didnot progress because he switched to another timezone. I remember one day ',

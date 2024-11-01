@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-
+import resumeOne from '../../../../assets/resume/resume.pdf';
 class EducationRight extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             skill: [
@@ -61,10 +60,14 @@ class EducationRight extends Component {
                                 </li>
                             ))
                         }
-                        
+
                     </ul>
                     <div className="fl-btn btn-general btn-hv-border">
-                        <Link to="#" className="f-w500 lt-sp1 border-corner2 text-one">Download Resume</Link>
+
+                        <a
+                            href={resumeOne}
+                            className="f-w500 lt-sp1 border-corner2 text-one"
+                        >Download Resume</a>
                     </div>
                 </div>
             </div>

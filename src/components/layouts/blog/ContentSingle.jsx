@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import blogImg1 from '../../../assets/images/blog/01.jpg';
+import blogImg2 from '../../../assets/images/blog/01.jpg';
+import blogImg3 from '../../../assets/images/blog/03.jpg';
+import blogImg4 from '../../../assets/images/blog/04.jpg';
+import blogImg5 from '../../../assets/images/blog/05.jpg';
 class ContentSingle extends Component {
     render() {
         return (
             <div className="main-post">
-                <div className="featured-post"><img src="images/blog/01.jpg" alt="images" /></div>
+                <div className="featured-post"><img src={blogImg1} alt="images" /></div>
                 <div className="content-blog">
                     <div className="post-meta d-flex justify-content-between">
                         <div className="meta-inner">
@@ -19,7 +24,7 @@ class ContentSingle extends Component {
                     <div className="mg-b60 d-sm-flex justify-content-between">
                         <div className="author-info-bls t1 d-flex">
                         <div className="avatar">
-                            <img src="images/blog/02.jpg" alt="images" />
+                            <img src={blogImg2} alt="images" />
                             <div className="socials-list">
                             <Link to="#"><i className="fa fa-facebook" aria-hidden="true" /></Link>
                             <Link to="#"><i className="fa fa-twitter" aria-hidden="true" /></Link>
@@ -101,7 +106,7 @@ class ContentSingle extends Component {
                                     <div className="comment-wrap">
                                         <div className="author-info-bls t2 position-relative d-flex">
                                             <div className="avatar">
-                                                <img src="images/blog/03.jpg" alt="images" />
+                                                <img src={blogImg3} alt="images" />
                                             </div>
                                             <div className="author-details">
                                                 <h3 className="name f-w500 color-d3 lt-sp09">Danial Tim</h3>
@@ -136,7 +141,7 @@ class ContentSingle extends Component {
                                     <div className="comment-wrap">
                                         <div className="author-info-bls t2 position-relative d-flex">
                                         <div className="avatar">
-                                            <img src="images/blog/04.jpg" alt="images" />
+                                            <img src={blogImg4} alt="images" />
                                         </div>
                                         <div className="author-details">
                                             <h3 className="name f-w500 color-d3 lt-sp09">Martin Simons</h3>
@@ -171,7 +176,7 @@ class ContentSingle extends Component {
                                             <div className="comment-wrap">
                                                 <div className="author-info-bls t2 position-relative d-flex">
                                                     <div className="avatar">
-                                                        <img src="images/blog/03.jpg" alt="images" />
+                                                        <img src={blogImg3} alt="images" />
                                                     </div>
                                                     <div className="author-details">
                                                         <h3 className="name f-w500 color-d3 lt-sp09">Danial Tim</h3>
@@ -199,7 +204,7 @@ class ContentSingle extends Component {
                                             <div className="comment-wrap">
                                                 <div className="author-info-bls t2 position-relative d-flex">
                                                     <div className="avatar">
-                                                        <img src="images/blog/04.jpg" alt="images" />
+                                                        <img src={blogImg4} alt="images" />
                                                     </div>
                                                     <div className="author-details">
                                                         <h3 className="name f-w500 color-d3 lt-sp09">Martin Simons</h3>
@@ -229,7 +234,7 @@ class ContentSingle extends Component {
                                     <div className="comment-wrap">
                                         <div className="author-info-bls t2 position-relative d-flex">
                                             <div className="avatar">
-                                                <img src="images/blog/05.jpg" alt="images" />
+                                                <img src={blogImg5} alt="images" />
                                             </div>
                                             <div className="author-details">
                                                 <h3 className="name f-w500 color-d3 lt-sp09">Sam White</h3>

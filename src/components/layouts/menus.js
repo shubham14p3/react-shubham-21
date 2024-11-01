@@ -1,3 +1,5 @@
+import resumeOne from "../../assets/resume/resume.pdf";
+
 const menus = [
   {
     id: 1,
@@ -19,12 +21,12 @@ const menus = [
     tomenu: "#recommendations",
     namemenu: "Recommendations",
   },
-
   {
     id: 5,
-    tomenu: "/resume/resume.pdf",
+    tomenu: resumeOne,
     namemenu: "Resume",
-    external: true, // Indicating that it's an external link
+    external: true,
+    download: true, 
   },
 ];
 
