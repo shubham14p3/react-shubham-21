@@ -1346,7 +1346,7 @@ body.slide-menu-dark .header #mainnav .menu li a:hover {
     background: #ffffff;
 }
 .testimonial.s1 {
-    padding: 100px 0 470px;
+    padding: 100px 0 10px;
     background-image: url('../images/testimonial/bg-s2-home1.png');
     position: relative;
     background-position: center bottom;
@@ -1805,7 +1805,7 @@ body.slide-menu-dark .header #mainnav .menu li a:hover {
 -------------------------------------------------------------- */
 .flat-education.s1 {
     overflow: hidden;
-    padding: 245px 0 333px;
+    padding: 0 0 100px;
 }
 .flat-education.s1 .shape-right {
     top: -270px;
@@ -2260,9 +2260,9 @@ body.slide-menu-dark .header #mainnav .menu li a:hover {
 .footer-widget-s1 {
     padding: 60px 0 58px 0;
 }
-.footer-s1-home1 .footer-widget-s1 {
+/* .footer-s1-home1 .footer-widget-s1 {
     padding: 196px 0 111px 0;
-}
+} */
 .footer-widget-s1 .site-list {
     text-align: right;
 }

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class Testimonial extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             testimonial: [
@@ -16,10 +19,8 @@ class Testimonial extends Component {
                     text05: 'He is a reliable person and I will always hold him in the highest esteem.',
                     name: 'Kajal Rajwade',
                     company: '- Solution Engineer at ex-Gammastack',
-                    classname: 'testimonial-t1 text-center'
                 },
 
-                
 
                 {
                     id: 2,
@@ -61,27 +62,205 @@ class Testimonial extends Component {
             ]
         }
     }
+
     render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: true, // Enable next/previous arrows
+            prevArrow: <div className="slick-arrow prev-arrow">{'<'}</div>,
+            nextArrow: <div className="slick-arrow next-arrow">{'>'}</div>,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        };
+
         return (
-            <div className="container">
-                <div className="custom-dot dot-t1 dot-s1 none-nav-default mg-dots-s1">
-                    <div className="flat-carousel-box data-effect clearfix" data-gap={0} data-column={1} data-column2={1} data-column3={1} data-column4={1} data-column5={1} data-dots="true" data-auto="false" data-nav="false" data-loop="true">
-                        <div className="owl-carousel">
-                            {
-                                this.state.testimonial.map(data => (
-                                    
-                                    <div className={data.classname} key={data.id}>
-                                                    <div className="avatar mg-b29"><img src={data.img} alt={data.alt} /></div>
-                                                    <p className="lt-sp03 mg-b25">
-                                                        {data.text01}<br /> {data.text02} <br/>{data.text03}<br/>{data.text04}<br/>{data.text05}
-                                                    </p>
-                                        <h3 className="name f-w600">{data.name}</h3><h4 className="name f-w600">{data.company}</h4>
-                                    </div> 
-                                ))
+            <div className="testimonial-container">
+                <Slider {...settings}>
+                    {
+                        this.state.testimonial.map(data => (
+                            <div className="testimonial-item" key={data.id}>
+                                <div className="avatar-container">
+                                    <img src={data.img} alt={data.alt} className="avatar" />
+                                </div>
+                                <p className="testimonial-text">
+                                    {data.text01}<br /> {data.text02} <br />{data.text03}<br />{data.text04}<br />{data.text05}
+                                </p>
+                                <h3 className="name">{data.name}</h3>
+                                <h4 className="company">{data.company}</h4>
+                            </div>
+                        ))
+                    }
+                </Slider>
+
+                {/* Responsive CSS */}
+                <style>
+                    {`
+                        .testimonial-container {
+                            width: 100%;
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            box-sizing: border-box;
+                        }
+
+                        .testimonial-item {
+                            width: 80vw; /* 80% of the viewport width */
+                            max-width: 1500px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #f9f9f9;
+                            border-radius: 8px;
+                            text-align: center;
+                        }
+
+                        .avatar-container {
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 20px;
+                        }
+
+                        .avatar {
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 50%;
+                        }
+
+                        .testimonial-text {
+                            font-size: 1rem;
+                            line-height: 1.5;
+                            color: #333;
+                            
+                            margin: 0 auto;
+                            padding: 0 10px; /* Add padding for better alignment */
+                            max-width: 90%; /* Center the justified text */
+                        }
+
+                        .name {
+                            font-size: 1.1rem;
+                            color: #444;
+                            margin-bottom: 5px;
+                        }
+
+                        .company {
+                            font-size: 0.9rem;
+                            color: #888;
+                        }
+
+                        /* Slick carousel arrow customization */
+                        .slick-arrow {
+                            font-size: 2rem;
+                            color: #333;
+                            opacity: 0.75;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            cursor: pointer;
+                            z-index: 1;
+                        }
+
+                        .prev-arrow {
+                            left: -40px;
+                        }
+
+                        .next-arrow {
+                            right: -40px;
+                        }
+
+                        /* Adjustments for smaller screens */
+                        @media (max-width: 1200px) {
+                            .testimonial-item {
+                                max-width: 900px;
                             }
-                        </div>
-                    </div>
-                </div> 
+                        }
+
+                        @media (max-width: 992px) {
+                            .testimonial-item {
+                                max-width: 700px;
+                            }
+
+                            .slick-arrow {
+                                font-size: 1.5rem;
+                            }
+
+                            .prev-arrow {
+                                left: 10px;
+                            }
+
+                            .next-arrow {
+                                right: 10px;
+                            }
+                        }
+
+                        @media (max-width: 768px) {
+                            .testimonial-item {
+                                width: 90vw;
+                                padding: 15px;
+                            }
+
+                            .testimonial-text {
+                                font-size: 0.9rem;
+                                max-width: 100%;
+                            }
+
+                            .name {
+                                font-size: 1rem;
+                            }
+
+                            .company {
+                                font-size: 0.85rem;
+                            }
+
+                            .slick-arrow {
+                                font-size: 1.2rem;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .testimonial-item {
+                                padding: 10px;
+                            }
+
+                            .testimonial-text {
+                                font-size: 0.85rem;
+                                max-width: 100%;
+                            }
+
+                            .name {
+                                font-size: 0.95rem;
+                            }
+
+                            .company {
+                                font-size: 0.8rem;
+                            }
+
+                            .slick-arrow {
+                                font-size: 1rem;
+                                left: 5px;
+                                right: 5px;
+                            }
+                        }
+                    `}
+                </style>
             </div>
         );
     }
