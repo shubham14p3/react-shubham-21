@@ -6,8 +6,8 @@ import testimonialImg1 from '../../../assets/images/testimonial/001.jpg';
 import testimonialImg2 from '../../../assets/images/testimonial/002.jpg';
 import testimonialImg3 from '../../../assets/images/testimonial/003.jpg';
 import testimonialImg4 from '../../../assets/images/testimonial/004.jpg';
+
 class Testimonial extends Component {
-    // import ""
     constructor(props) {
         super(props);
         this.state = {
@@ -24,8 +24,6 @@ class Testimonial extends Component {
                     name: 'Kajal Rajwade',
                     company: '- Solution Engineer at ex-Gammastack',
                 },
-
-
                 {
                     id: 2,
                     img: testimonialImg2,
@@ -68,6 +66,24 @@ class Testimonial extends Component {
     }
 
     render() {
+        const PrevArrow = (props) => {
+            const { onClick } = props;
+            return (
+                <div className="slick-arrow prev-arrow" onClick={onClick}>
+                    {'<'}
+                </div>
+            );
+        };
+
+        const NextArrow = (props) => {
+            const { onClick } = props;
+            return (
+                <div className="slick-arrow next-arrow" onClick={onClick}>
+                    {'>'}
+                </div>
+            );
+        };
+
         const settings = {
             dots: true,
             infinite: true,
@@ -76,9 +92,8 @@ class Testimonial extends Component {
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 3000,
-            arrows: true, // Enable next/previous arrows
-            prevArrow: <div className="slick-arrow prev-arrow">{'<'}</div>,
-            nextArrow: <div className="slick-arrow next-arrow">{'>'}</div>,
+            prevArrow: <PrevArrow />,
+            nextArrow: <NextArrow />,
             responsive: [
                 {
                     breakpoint: 768,
@@ -128,7 +143,7 @@ class Testimonial extends Component {
                         }
 
                         .testimonial-item {
-                            width: 80vw; /* 80% of the viewport width */
+                            width: 80vw;
                             max-width: 1500px;
                             margin: 0 auto;
                             padding: 20px;
@@ -153,10 +168,9 @@ class Testimonial extends Component {
                             font-size: 1rem;
                             line-height: 1.5;
                             color: #333;
-                            
                             margin: 0 auto;
-                            padding: 0 10px; /* Add padding for better alignment */
-                            max-width: 90%; /* Center the justified text */
+                            padding: 0 10px;
+                            max-width: 90%;
                         }
 
                         .name {
@@ -170,7 +184,6 @@ class Testimonial extends Component {
                             color: #888;
                         }
 
-                        /* Slick carousel arrow customization */
                         .slick-arrow {
                             font-size: 2rem;
                             color: #333;
@@ -190,7 +203,6 @@ class Testimonial extends Component {
                             right: -40px;
                         }
 
-                        /* Adjustments for smaller screens */
                         @media (max-width: 1200px) {
                             .testimonial-item {
                                 max-width: 900px;
