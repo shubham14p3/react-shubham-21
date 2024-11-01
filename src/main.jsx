@@ -1,10 +1,18 @@
+const favicon = document.createElement('link');
+favicon.rel = 'icon';
+favicon.href = './assets/icon/favicon.ico';
+document.head.appendChild(favicon);
 import React from "react";
-import * as ReactDOMClient from "react-dom/client";
-import App from "./App";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
 import { BrowserRouter } from "react-router-dom";
 
+
 // Importing CSS files from the assets directory
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./assets/stylesheet/font-awesome.css";
 import "./assets/stylesheet/owl.theme.default.min.css";
 import "./assets/stylesheet/owl.carousel.min.css";
@@ -21,17 +29,10 @@ import "./assets/stylesheet/mobile-menu.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Get the container for rendering the app
-const container = document.getElementById("root");
-
-// Create the root for rendering
-const root = ReactDOMClient.createRoot(container);
-
-// Render the app to the root
-root.render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
-);
+  </StrictMode>,
+)
