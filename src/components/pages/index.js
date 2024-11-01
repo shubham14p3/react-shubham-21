@@ -1,11 +1,11 @@
-// import Home from './Home';
-// import Blog from './Blog';
-// import BlogSingle from './BlogSingle';
+import Home from './Home';
+import NotFound from './NotFound';
+import Marriage from './Marriage';
 
-// const routes = [
-//     { path: "/", component: Home},
-//     { path: "/blog", component: Blog},
-//     { path: "/blog-single", component: BlogSingle},
-// ]
+const routes = [
+    { path: "/", component: Home},
+    { path: "*", component: NotFound},
+    { path: "/marriage", component: Marriage},
+]
 
-// export default routes;
+export default routes;
