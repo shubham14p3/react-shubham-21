@@ -8,7 +8,7 @@ const Design = ({ data }) => {
             return null;
         }
 
-        const regex = /★(.*?)\:/g;
+        const regex = /★(.*?):/g;
         const parts = text.split(regex);
 
         if (!parts || parts.length < 2) {

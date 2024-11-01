@@ -19,7 +19,7 @@ const menus = [
     tomenu: "#recommendations",
     namemenu: "Recommendations",
   },
-  ,
+
   {
     id: 5,
     tomenu: "/resume/resume.pdf",
