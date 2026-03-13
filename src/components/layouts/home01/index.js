@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Banner from "./Banner";
-import Testimonial from "./Testimonial";
+// import Testimonial from "./Testimonial";
+import Testimonial from "./testimonial/Testimonial";
 import ShapeIcon from "./ShapeIcon";
 import About from "./About";
 import Specilizing from "./Specilizing";
@@ -8,7 +9,6 @@ import Portfolio from "./Portfolio";
 import Education from "./Education";
 import Certificate from "./Certificate";
 import Footer from "./Footer";
-import ComponentsShowcase from "./ComponentsShowcase";
 
 export {
   Header,
@@ -21,5 +21,4 @@ export {
   Education,
   Certificate,
   Footer,
-  ComponentsShowcase
 };

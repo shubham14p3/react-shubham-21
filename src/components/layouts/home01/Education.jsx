@@ -1,7 +1,7 @@
 import React from "react";
 import EducationLeft from "./education/EducationLeft";
 import EducationRight from "./education/EducationRight";
-
+import "./Education.css";
 export default function Education() {
   return (
     <section id="education" className="section-shell section-anchor">

@@ -8,7 +8,6 @@ import {
   Certificate,
   Portfolio,
   Testimonial,
-  ComponentsShowcase,
   Footer,
 } from "../layouts/home01";
 export default function Home() {
@@ -42,7 +41,6 @@ export default function Home() {
         <Education />
         <Certificate />
         <Portfolio />
-        <ComponentsShowcase />
         <Testimonial />
       </main>
       <Footer />

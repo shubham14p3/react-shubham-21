@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-
+import "./Portfolio.css";
 import projectThumb1 from "../../../assets/images/pp/1.jpg";
 import projectThumb2 from "../../../assets/images/pp/3.jpg";
 import projectThumb3 from "../../../assets/images/pp/5.jpg";

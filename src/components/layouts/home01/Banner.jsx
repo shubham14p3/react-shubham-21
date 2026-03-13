@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import resumeOne from "../../../assets/resume/resume.pdf";
 import profileImage from "../../../assets/images/section/03.png";
-
+import "./Banner.css";
 const roles = ["Frontend Developer", "React Engineer", "UI Performance Specialist"];
 
 const stats = [

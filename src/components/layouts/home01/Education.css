@@ -1,0 +1,67 @@
+.edu-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.edu-profile {
+  padding: 24px;
+}
+
+.edu-profile__image {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.edu-socials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.edu-timeline {
+  display: grid;
+  gap: 14px;
+}
+
+.edu-item {
+  padding: 20px;
+}
+
+.edu-item__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.edu-item__school {
+  font-weight: 700;
+}
+
+.edu-item__year {
+  color: var(--brand-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.edu-item__degree {
+  color: #dbeafe;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.edu-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
+}
