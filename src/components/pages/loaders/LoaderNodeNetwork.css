@@ -1,0 +1,239 @@
+.loader-shell--network {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 22%,
+      rgba(34, 211, 238, 0.14),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 50% 85%,
+      rgba(168, 85, 247, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #030712 0%, #08101f 55%, #0b1320 100%);
+  color: #f8fbff;
+}
+
+.network-loader-card {
+  position: relative;
+  width: min(92vw, 760px);
+  padding: 1px;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.06)
+  );
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.network-loader-card__grid {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.network-loader {
+  position: relative;
+  border-radius: 27px;
+  padding: 28px 28px 24px;
+  background: rgba(8, 15, 28, 0.78);
+  backdrop-filter: blur(18px);
+}
+
+.network-loader__map {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(59, 130, 246, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.015)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 30px rgba(96, 165, 250, 0.06);
+}
+
+.network-loader__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.network-loader__connection {
+  stroke: rgba(148, 163, 184, 0.22);
+  stroke-width: 0.55;
+  transition:
+    stroke 240ms ease,
+    opacity 240ms ease;
+}
+
+.network-loader__connection.is-active {
+  stroke: rgba(96, 165, 250, 0.95);
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.7));
+}
+
+.network-loader__node {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.02),
+    0 8px 22px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.network-loader__node-core {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(226, 232, 240, 0.7);
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.network-loader__node.is-active {
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: rgba(96, 165, 250, 0.95);
+  box-shadow:
+    0 0 0 8px rgba(96, 165, 250, 0.09),
+    0 0 22px rgba(96, 165, 250, 0.35),
+    0 12px 28px rgba(0, 0, 0, 0.34);
+}
+
+.network-loader__node.is-active .network-loader__node-core {
+  background: #93c5fd;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
+}
+
+.network-loader__content {
+  padding-top: 22px;
+  text-align: center;
+}
+
+.network-loader__eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(186, 230, 253, 0.76);
+}
+
+.network-loader__title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #f8fbff;
+}
+
+.network-loader__subtitle {
+  margin: 12px auto 0;
+  max-width: 540px;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.network-loader__bottom {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.network-loader__meter {
+  text-align: left;
+}
+
+.network-loader__meter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.78);
+}
+
+.network-loader__track {
+  position: relative;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.network-loader__bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 48%, #a78bfa 100%);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.45);
+  transition: width 120ms linear;
+}
+
+.network-loader__stats {
+  font-size: 0.92rem;
+  color: rgba(191, 219, 254, 0.9);
+}
+
+@media (max-width: 640px) {
+  .network-loader-card {
+    width: min(94vw, 560px);
+  }
+
+  .network-loader {
+    padding: 18px 18px 20px;
+  }
+
+  .network-loader__map {
+    height: 240px;
+  }
+
+  .network-loader__title {
+    font-size: 1.9rem;
+  }
+
+  .network-loader__subtitle {
+    font-size: 0.94rem;
+  }
+}

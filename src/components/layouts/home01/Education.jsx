@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import { EducationLeft, EducationRight } from './education/index';
+import React from "react";
+import EducationLeft from "./education/EducationLeft";
+import EducationRight from "./education/EducationRight";
 
-class Education extends Component {
-    render() {
-        return (
-            <div className="section slide-personal-Intro-fifth slide-dark bg-white">
-                <section className="flat-education flex s1 position-relative" id="education">
-                    <div className="shape-right"><img src="images/section/16.png" alt="images"/></div>
-                    <div className="container">
-                        <div className="d-lg-flex">
-                            <EducationLeft />
-                            <EducationRight />
-                        </div>
-                    </div>
-                </section>
-            </div>
-        );
-    }
+export default function Education() {
+  return (
+    <section id="education" className="section-shell section-anchor">
+      <div className="container-shell">
+        <div className="section-title-wrap">
+          <div className="section-eyebrow">Education</div>
+          <h2 className="section-title">Academic foundation that supports my engineering journey.</h2>
+        </div>
+
+        <div className="edu-grid">
+          <EducationLeft />
+          <EducationRight />
+        </div>
+      </div>
+    </section>
+  );
 }
-
-export default Education;

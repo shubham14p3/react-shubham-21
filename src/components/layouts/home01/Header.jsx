@@ -1,244 +1,388 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import menus from "../menus";
-import logo from "../../../assets/images/logo/logo.png";
+import "./Header.css";
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const socialLinks = [
+  {
+    id: "facebook",
+    href: "https://www.facebook.com/shubham14p3",
+    icon: "fa-facebook",
+    label: "Facebook",
+  },
+  {
+    id: "linkedin",
+    href: "https://www.linkedin.com/in/shubham14p3/",
+    icon: "fa-linkedin",
+    label: "LinkedIn",
+  },
+  {
+    id: "github",
+    href: "https://github.com/shubham14p3",
+    icon: "fa-github",
+    label: "GitHub",
+  },
+  {
+    id: "whatsapp",
+    href: "https://wa.me/918092766575",
+    icon: "fa-whatsapp",
+    label: "WhatsApp",
+  },
+];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+const roleWords = ["Frontend Engineer", "React Developer", "UI Engineer"];
+
+function scrollToSection(id) {
+  const target = document.querySelector(id);
+  const header = document.querySelector(".site-header");
+
+  if (!target) return;
+
+  const headerHeight = header?.offsetHeight ?? 84;
+  const extraOffset = 18;
+  const targetY =
+    target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset;
+
+  window.scrollTo({
+    top: targetY,
+    behavior: "smooth",
+  });
+}
+
+function getAllInternalHrefs(items) {
+  const hrefs = [];
+
+  items.forEach((item) => {
+    if (item.href && !item.external) {
+      hrefs.push(item.href);
+    }
+
+    if (item.children?.length) {
+      hrefs.push(...getAllInternalHrefs(item.children));
+    }
+  });
+
+  return hrefs;
+}
+
+function isMenuActive(item, activeId) {
+  if (item.href && item.href === activeId) return true;
+  if (!item.children) return false;
+  return item.children.some((child) => isMenuActive(child, activeId));
+}
+
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeId, setActiveId] = useState(window.location.hash || "#home");
+  const [mobileExpanded, setMobileExpanded] = useState({});
+  const [wordIndex, setWordIndex] = useState(0);
+  const [typedText, setTypedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  const internalHrefs = useMemo(() => getAllInternalHrefs(menus), []);
+
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isReady) return;
+
+    const currentWord = roleWords[wordIndex % roleWords.length];
+    const speed = isDeleting ? 45 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        const nextText = currentWord.slice(0, typedText.length + 1);
+        setTypedText(nextText);
+
+        if (nextText === currentWord) {
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, 1200);
+        }
+      } else {
+        const nextText = currentWord.slice(0, Math.max(0, typedText.length - 1));
+        setTypedText(nextText);
+
+        if (nextText === "") {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % roleWords.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, wordIndex, isReady]);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", mobileOpen);
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveId(window.location.hash || "#home");
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector(".site-header");
+      const headerHeight = header?.offsetHeight ?? 84;
+      const scrollPosition = window.scrollY + headerHeight + 40;
+
+      let currentSection = window.location.hash || "#home";
+
+      for (const href of internalHrefs) {
+        const section = document.querySelector(href);
+        if (!section) continue;
+
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = href;
+        }
+      }
+
+      setActiveId(currentSection);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [internalHrefs]);
+
+  const handleNavClick = (href, external = false) => (event) => {
+    if (external) return;
+
+    event.preventDefault();
+    setActiveId(href);
+    window.location.hash = href;
+    scrollToSection(href);
+    setMobileOpen(false);
   };
 
-  const scrollToSection = (sectionId) => {
-    const section = document.querySelector(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+  const toggleMobileGroup = (key) => {
+    setMobileExpanded((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  const renderDesktopMenu = (item, level = 0) => {
+    if (item.external) {
+      return (
+        <a
+          key={item.id}
+          href={item.href}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="nav-link"
+          download={item.download}
+        >
+          {item.label}
+        </a>
+      );
     }
-    setIsMobileMenuOpen(false); // Close the menu after scrolling
+
+    if (!item.children) {
+      return (
+        <a
+          key={item.id}
+          href={item.href}
+          onClick={handleNavClick(item.href)}
+          className={`nav-link ${isMenuActive(item, activeId) ? "active" : ""}`}
+          aria-current={item.href === activeId ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      );
+    }
+
+    return (
+      <div
+        key={item.id}
+        className={`nav-dropdown nav-dropdown--level-${level} ${
+          isMenuActive(item, activeId) ? "active" : ""
+        }`}
+      >
+        <button type="button" className="nav-dropdown__trigger">
+          <span>{item.label}</span>
+          <i className="fa fa-angle-down" aria-hidden="true" />
+        </button>
+
+        <div className="nav-dropdown__menu">
+          {item.children.map((child) =>
+            child.children ? (
+              <div key={child.id} className="nav-dropdown nav-dropdown--nested">
+                <button type="button" className="nav-dropdown__item nav-dropdown__item--trigger">
+                  <span>{child.label}</span>
+                  <i className="fa fa-angle-right" aria-hidden="true" />
+                </button>
+
+                <div className="nav-dropdown__submenu">
+                  {child.children.map((grandChild) => (
+                    <a
+                      key={grandChild.id}
+                      href={grandChild.href}
+                      onClick={handleNavClick(grandChild.href)}
+                      className={`nav-dropdown__item ${
+                        grandChild.href === activeId ? "active" : ""
+                      }`}
+                    >
+                      {grandChild.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={child.id}
+                href={child.href}
+                onClick={handleNavClick(child.href)}
+                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""}`}
+              >
+                {child.label}
+              </a>
+            )
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const renderMobileMenu = (item, path = item.id) => {
+    if (item.external) {
+      return (
+        <a
+          key={item.id}
+          href={item.href}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mobile-nav-link"
+          download={item.download}
+          onClick={() => setMobileOpen(false)}
+        >
+          {item.label}
+        </a>
+      );
+    }
+
+    if (!item.children) {
+      return (
+        <a
+          key={item.id}
+          href={item.href}
+          className={`mobile-nav-link ${item.href === activeId ? "active" : ""}`}
+          onClick={handleNavClick(item.href)}
+        >
+          {item.label}
+        </a>
+      );
+    }
+
+    const expanded = !!mobileExpanded[path];
+
+    return (
+      <div key={item.id} className="mobile-nav-group">
+        <button
+          type="button"
+          className={`mobile-nav-link mobile-nav-link--group ${
+            isMenuActive(item, activeId) ? "active" : ""
+          }`}
+          onClick={() => toggleMobileGroup(path)}
+        >
+          <span>{item.label}</span>
+          <i
+            className={`fa ${expanded ? "fa-angle-up" : "fa-angle-down"}`}
+            aria-hidden="true"
+          />
+        </button>
+
+        {expanded ? (
+          <div className="mobile-nav-children">
+            {item.children.map((child) => renderMobileMenu(child, `${path}-${child.id}`))}
+          </div>
+        ) : null}
+      </div>
+    );
   };
 
   return (
-    <header id="header" className="header header-style1" style={{ backgroundColor: "black" }}>
-      <div className="container">
-        <div className="flex-header d-flex justify-content-between align-items-center">
-          {/* Logo + Social icons in one row */}
-          <div className="socials-list-hd s1 hv1 d-flex align-items-center">
-            {/* Logo */}
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#home");
-              }}
-              className="header-logo d-inline-flex align-items-center"
-              aria-label="Home"
-            >
-              <img src={logo} alt="Logo" className="site-logo" />
-            </a>
+    <>
+      <header className="site-header" aria-label="Main navigation">
+        <div className="container-shell site-header__inner">
+          <a
+            href="#home"
+            className="site-brand"
+            onClick={handleNavClick("#home")}
+            aria-label="Go to home section"
+          >
+            <span className="site-brand__meta">
+              <span className="site-brand__name">Shubham Raj</span>
 
-            {/* Social icons (forced white) */}
-            <a
-              href="https://www.facebook.com/shubham14p3"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="social-link"
-              aria-label="Facebook"
-            >
-              <i className="fa fa-facebook" aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/shubham14p3/"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="social-link"
-              aria-label="LinkedIn"
-            >
-              <i className="fa fa-linkedin" aria-hidden="true" />
-            </a>
-            <a
-              href="https://github.com/shubham14p3"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="social-link"
-              aria-label="GitHub"
-            >
-              <i className="fa fa-github" aria-hidden="true" />
-            </a>
-            <a
-              href="https://wa.me/918092766575"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="social-link"
-              aria-label="WhatsApp"
-            >
-              <i className="fa fa-whatsapp" aria-hidden="true" />
-            </a>
-          </div>
+              <span className="site-brand__role">
+                <span className={`site-brand__typed ${isDeleting ? "deleting" : ""}`}>
+                  {typedText}
+                  <span className="site-brand__cursor" aria-hidden="true">
+                    |
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
 
-          {/* Desktop Menu */}
-          <div className="content-menu d-lg-flex">
-            <div className="nav-wrap">
-              <nav id="mainnav" className="mainnav">
-                <ul className="menu ace-responsive-menu" data-menu-style="horizontal">
-                  {menus.map((menu) => (
-                    <li key={menu.id}>
-                      {menu.external ? (
-                        <a href={menu.tomenu} target="_blank" rel="noopener noreferrer">
-                          {menu.namemenu}
-                        </a>
-                      ) : (
-                        <a
-                          href={menu.tomenu}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(menu.tomenu);
-                          }}
-                          className="click-model"
-                        >
-                          {menu.namemenu}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+          <nav className="site-nav" aria-label="Desktop navigation">
+            {menus.map((item) => renderDesktopMenu(item))}
+          </nav>
+
+          <div className="site-header__actions">
+            <div className="header-socials" aria-label="Social links">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="icon-link"
+                  aria-label={item.label}
+                >
+                  <i className={`fa ${item.icon}`} aria-hidden="true" />
+                </a>
+              ))}
             </div>
-          </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <div dir="rtl" className="btn-menu mobile-header__menu-button" onClick={toggleMobileMenu}>
-            <div className="line line-1" />
-            <div className="line line-2" />
-            <div className="line line-3" />
-            <div className="line line-4" />
+            <button
+              type="button"
+              className="mobile-menu-btn"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((prev) => !prev)}
+            >
+              <i className={`fa ${mobileOpen ? "fa-times" : "fa-bars"}`} />
+            </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Dropdown Menu */}
-        {isMobileMenuOpen && (
-          <div className="mobile-dropdown-menu">
-            <ul>
-              {menus.map((menu) => (
-                <li key={menu.id}>
-                  {menu.external ? (
-                    <a
-                      href={menu.tomenu}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="btn-inner border-corner2 lt-sp08 text-white"
-                    >
-                      {menu.namemenu}
-                    </a>
-                  ) : (
-                    <a
-                      href={menu.tomenu}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(menu.tomenu);
-                      }}
-                      className="btn-inner border-corner2 lt-sp08 text-white"
-                    >
-                      {menu.namemenu}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-
-      {/* Inline CSS */}
-      <style>
-        {`
-          /* --- Align logo + icons on one line with spacing --- */
-          .socials-list-hd {
-            display: flex;
-            align-items: center;
-            gap: 14px; /* space between logo and icons */
-          }
-
-          /* Responsive logo sizing */
-          .site-logo {
-            height: clamp(28px, 5vw, 56px); /* dynamic by screen size */
-            width: auto;
-            display: block;
-          }
-
-          /* Slight separation between logo and first icon */
-          .header-logo {
-            margin-right: 8px;
-          }
-
-          /* White icon color ONLY for the social icons (doesn't affect other text) */
-          .socials-list-hd .social-link,
-          .socials-list-hd .social-link i {
-            color: #fff;
-            text-decoration: none;
-            line-height: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px; /* icon size */
-          }
-          .socials-list-hd .social-link:hover i {
-            opacity: 0.9;
-          }
-
-          /* Mobile dropdown (kept as in your version) */
-          .mobile-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background-color: black;
-            color: white;
-            padding: 10px 0;
-            z-index: 999;
-          }
-          .mobile-dropdown-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-          }
-          .mobile-dropdown-menu ul li {
-            padding: 10px 0;
-          }
-          .mobile-dropdown-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-          }
-          .mobile-dropdown-menu ul li a:hover {
-            color: #f1c40f;
-          }
-
-          /* Only show dropdown on mobile, hide desktop menu */
-          @media (max-width: 992px) {
-            .mobile-dropdown-menu {
-              display: block;
-            }
-            .content-menu {
-              display: none;
-            }
-          }
-
-          /* Tighten spacing on very small screens */
-          @media (max-width: 576px) {
-            .socials-list-hd {
-              gap: 12px;
-            }
-            .socials-list-hd .social-link {
-              font-size: 16px;
-            }
-          }
-        `}
-      </style>
-    </header>
+      {mobileOpen ? (
+        <div className="mobile-menu" role="dialog" aria-label="Mobile navigation">
+          <div className="mobile-menu__inner">{menus.map((item) => renderMobileMenu(item))}</div>
+        </div>
+      ) : null}
+    </>
   );
-};
-
-export default Header;
+}

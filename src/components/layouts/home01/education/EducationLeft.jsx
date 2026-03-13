@@ -1,24 +1,54 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import image11 from '../../../../assets/images/section/11.png';
-class EducationLeft extends Component {
-    render() {
-        return (
-            <div className="col-left">
-                <div className="flat-spacer" data-desktop={97} data-mobile={0} data-smobile={0} />
-                <div className="featured-post position-relative animate-element wow delay5 fadeInUp" data-wow-delay="0.5s">
-                    <img src={image11} alt="images" />
-                    <div className="flat-spacer" data-desktop={0} data-mobile={0} data-smobile={30} />
-                    <div className="">
-                        <Link to="https://www.facebook.com/shubham14p3" className="color-s1"><i className="fa fa-facebook" aria-hidden="true" /></Link>
-                        <Link to="https://www.linkedin.com/in/shubham14p3/" className="color-s2"><i className="fa fa-linkedin" aria-hidden="true" /></Link>
-                        <Link to="https://github.com/shubham14p3" className="color-s3"><i className="fa fa-github" aria-hidden="true" /></Link>
-                    </div>
-                </div>
+import React from "react";
+import image11 from "../../../../assets/images/section/11.png";
 
-            </div>
-        );
-    }
+const socialLinks = [
+  {
+    id: 1,
+    href: "https://www.facebook.com/shubham14p3",
+    icon: "fa-facebook",
+    label: "Facebook",
+  },
+  {
+    id: 2,
+    href: "https://www.linkedin.com/in/shubham14p3/",
+    icon: "fa-linkedin",
+    label: "LinkedIn",
+  },
+  {
+    id: 3,
+    href: "https://github.com/shubham14p3",
+    icon: "fa-github",
+    label: "GitHub",
+  },
+];
+
+export default function EducationLeft() {
+  return (
+    <aside className="edu-profile glass-card">
+      <div className="edu-profile__image">
+        <img src={image11} alt="Education and career illustration" />
+      </div>
+
+      <div className="edu-socials">
+        {socialLinks.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="icon-link"
+            aria-label={item.label}
+          >
+            <i className={`fa ${item.icon}`} aria-hidden="true" />
+          </a>
+        ))}
+      </div>
+
+      <p className="about-copy" style={{ marginTop: 18 }}>
+        My education combines engineering fundamentals with practical software
+        development growth. It has helped me work confidently across frontend,
+        testing, performance, product thinking, and full-stack collaboration.
+      </p>
+    </aside>
+  );
 }
-
-export default EducationLeft;

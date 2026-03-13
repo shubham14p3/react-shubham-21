@@ -8,6 +8,7 @@ import Portfolio from "./Portfolio";
 import Education from "./Education";
 import Certificate from "./Certificate";
 import Footer from "./Footer";
+import ComponentsShowcase from "./ComponentsShowcase";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Education,
   Certificate,
   Footer,
+  ComponentsShowcase
 };

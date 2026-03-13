@@ -1,0 +1,323 @@
+.neo-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 78% 24%,
+      rgba(34, 211, 238, 0.12),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 50% 85%,
+      rgba(168, 85, 247, 0.14),
+      transparent 34%
+    ),
+    linear-gradient(180deg, #030712 0%, #08111f 56%, #0b1320 100%);
+  color: #f8fbff;
+}
+
+.neo-shell__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.neo-shell__glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.neo-shell__glow--one {
+  width: 280px;
+  height: 280px;
+  left: 10%;
+  top: 14%;
+  background: rgba(59, 130, 246, 0.16);
+}
+
+.neo-shell__glow--two {
+  width: 320px;
+  height: 320px;
+  right: 8%;
+  bottom: 10%;
+  background: rgba(168, 85, 247, 0.14);
+}
+
+.neo-card {
+  position: relative;
+  width: min(92vw, 680px);
+  padding: 1px;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.05)
+  );
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.neo-card__border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+}
+
+.neo-content {
+  position: relative;
+  z-index: 1;
+  border-radius: 29px;
+  padding: 42px 34px 30px;
+  text-align: center;
+  background: rgba(7, 14, 26, 0.8);
+  backdrop-filter: blur(18px);
+}
+
+.neo-orbit-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.neo-orbit {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: grid;
+  place-items: center;
+}
+
+.neo-orbit__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.neo-orbit__ring--one {
+  animation: neoSpinClockwise 10s linear infinite;
+  box-shadow:
+    inset 0 0 20px rgba(96, 165, 250, 0.06),
+    0 0 24px rgba(96, 165, 250, 0.08);
+}
+
+.neo-orbit__ring--two {
+  inset: 16px;
+  border-color: rgba(96, 165, 250, 0.36);
+  animation: neoSpinCounter 7s linear infinite;
+}
+
+.neo-orbit__ring--three {
+  inset: 34px;
+  border-color: rgba(167, 139, 250, 0.34);
+  animation: neoSpinClockwise 5.5s linear infinite;
+}
+
+.neo-orbit__ring--one::before,
+.neo-orbit__ring--two::before,
+.neo-orbit__ring--three::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: #93c5fd;
+  box-shadow: 0 0 18px rgba(96, 165, 250, 0.9);
+}
+
+.neo-orbit__ring--three::before {
+  width: 8px;
+  height: 8px;
+  background: #c4b5fd;
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.9);
+}
+
+.neo-orbit__core {
+  position: relative;
+  z-index: 2;
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f8fbff;
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.2),
+      transparent 35%
+    ),
+    linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(96, 165, 250, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 12px rgba(96, 165, 250, 0.05),
+    0 0 30px rgba(96, 165, 250, 0.24),
+    inset 0 0 20px rgba(255, 255, 255, 0.06);
+}
+
+.neo-orbit__pulse {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  animation: neoPulse 2s ease-out infinite;
+}
+
+.neo-eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(186, 230, 253, 0.74);
+}
+
+.neo-title {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #f8fbff;
+}
+
+.neo-title__dot {
+  color: #7dd3fc;
+}
+
+.neo-subtitle {
+  margin: 16px auto 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(226, 232, 240, 0.82);
+}
+
+.neo-word-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 0.18rem 0.7rem;
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  box-shadow: inset 0 0 14px rgba(96, 165, 250, 0.08);
+}
+
+.neo-word {
+  color: #bae6fd;
+  font-weight: 600;
+}
+
+.neo-progress {
+  margin-top: 28px;
+  text-align: left;
+}
+
+.neo-progress__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.76);
+}
+
+.neo-progress__track {
+  position: relative;
+  height: 11px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.neo-progress__bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22d3ee 0%, #60a5fa 45%, #a78bfa 100%);
+  box-shadow: 0 0 24px rgba(96, 165, 250, 0.36);
+  transition: width 120ms linear;
+}
+
+@keyframes neoSpinClockwise {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes neoSpinCounter {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes neoPulse {
+  0% {
+    transform: scale(0.88);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .neo-card {
+    width: min(94vw, 540px);
+  }
+
+  .neo-content {
+    padding: 30px 20px 24px;
+  }
+
+  .neo-orbit {
+    width: 150px;
+    height: 150px;
+  }
+
+  .neo-orbit__core {
+    width: 72px;
+    height: 72px;
+    font-size: 1.05rem;
+  }
+
+  .neo-title {
+    font-size: 2.2rem;
+  }
+
+  .neo-subtitle {
+    font-size: 0.95rem;
+  }
+}
