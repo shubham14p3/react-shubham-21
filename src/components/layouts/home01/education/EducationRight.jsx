@@ -62,13 +62,13 @@ class EducationRight extends Component {
                         }
 
                     </ul>
-                    <div className="fl-btn btn-general btn-hv-border">
+                    {/* <div className="fl-btn btn-general btn-hv-border">
 
                         <a
                             href={resumeOne}
                             className="f-w500 lt-sp1 border-corner2 text-one"
                         >Download Resume</a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

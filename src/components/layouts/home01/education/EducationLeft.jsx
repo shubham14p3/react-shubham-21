@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import image11 from '../../../../assets/images/section/11.png';
 class EducationLeft extends Component {
     render() {
@@ -12,9 +12,10 @@ class EducationLeft extends Component {
                     <div className="">
                         <Link to="https://www.facebook.com/shubham14p3" className="color-s1"><i className="fa fa-facebook" aria-hidden="true" /></Link>
                         <Link to="https://www.linkedin.com/in/shubham14p3/" className="color-s2"><i className="fa fa-linkedin" aria-hidden="true" /></Link>
-                        <Link to="https://github.com/shubham14p3" className="color-s3"><i className="fa fa-github" aria-hidden="true" /></Link>                        
+                        <Link to="https://github.com/shubham14p3" className="color-s3"><i className="fa fa-github" aria-hidden="true" /></Link>
                     </div>
                 </div>
+
             </div>
         );
     }

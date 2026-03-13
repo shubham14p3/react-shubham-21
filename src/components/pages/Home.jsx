@@ -9,6 +9,7 @@ import {
   Specilizing,
   Education,
   Footer,
+  Certificate,
 } from "../layouts/home01/index";
 
 // Import images
@@ -77,6 +78,11 @@ const Home = () => {
           </div>
           <Specilizing />
           <Education />
+          <Certificate />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
 
         <div className="section slide-personal-Intro-second slide-dark">

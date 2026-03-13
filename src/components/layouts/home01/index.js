@@ -6,6 +6,7 @@ import About from "./About";
 import Specilizing from "./Specilizing";
 import Portfolio from "./Portfolio";
 import Education from "./Education";
+import Certificate from "./Certificate";
 import Footer from "./Footer";
 
 export {
@@ -17,5 +18,6 @@ export {
   Specilizing,
   Portfolio,
   Education,
+  Certificate,
   Footer,
 };
