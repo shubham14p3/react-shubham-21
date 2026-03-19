@@ -7,25 +7,25 @@ const socialLinks = [
   {
     id: "facebook",
     href: "https://www.facebook.com/shubham14p3",
-    icon: "fa-facebook",
+    icon: "fa-brands fa-facebook-f",
     label: "Facebook",
   },
   {
     id: "linkedin",
     href: "https://www.linkedin.com/in/shubham14p3/",
-    icon: "fa-linkedin",
+    icon: "fa-brands fa-linkedin-in",
     label: "LinkedIn",
   },
   {
     id: "github",
     href: "https://github.com/shubham14p3",
-    icon: "fa-github",
+    icon: "fa-brands fa-github",
     label: "GitHub",
   },
   {
     id: "whatsapp",
     href: "https://wa.me/918092766575",
-    icon: "fa-whatsapp",
+    icon: "fa-brands fa-whatsapp",
     label: "WhatsApp",
   },
 ];
@@ -253,16 +253,19 @@ export default function Header() {
       >
         <button type="button" className="nav-dropdown__trigger">
           <span>{item.label}</span>
-          <i className="fa fa-angle-down" aria-hidden="true" />
+          <i className="fa-solid fa-angle-down" aria-hidden="true" />
         </button>
 
         <div className="nav-dropdown__menu">
           {item.children.map((child) =>
             child.children ? (
               <div key={child.id} className="nav-dropdown nav-dropdown--nested">
-                <button type="button" className="nav-dropdown__item nav-dropdown__item--trigger">
+                <button
+                  type="button"
+                  className="nav-dropdown__item nav-dropdown__item--trigger"
+                >
                   <span>{child.label}</span>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
+                  <i className="fa-solid fa-angle-right" aria-hidden="true" />
                 </button>
 
                 <div className="nav-dropdown__submenu">
@@ -284,7 +287,8 @@ export default function Header() {
                 key={child.id}
                 href={child.href}
                 onClick={handleNavClick(child.href)}
-                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""}`}
+                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""
+                  }`}
               >
                 {child.label}
               </a>
@@ -337,7 +341,7 @@ export default function Header() {
         >
           <span>{item.label}</span>
           <i
-            className={`fa ${expanded ? "fa-angle-up" : "fa-angle-down"}`}
+            className={`fa-solid ${expanded ? "fa-angle-up" : "fa-angle-down"}`}
             aria-hidden="true"
           />
         </button>
@@ -390,7 +394,7 @@ export default function Header() {
                   className="icon-link"
                   aria-label={item.label}
                 >
-                  <i className={`fa ${item.icon}`} aria-hidden="true" />
+                  <i className={item.icon} aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -402,7 +406,10 @@ export default function Header() {
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((prev) => !prev)}
             >
-              <i className={`fa ${mobileOpen ? "fa-times" : "fa-bars"}`} />
+              <i
+                className={mobileOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}
+                aria-hidden="true"
+              />
             </button>
           </div>
         </div>
@@ -410,7 +417,9 @@ export default function Header() {
 
       {mobileOpen ? (
         <div className="mobile-menu" role="dialog" aria-label="Mobile navigation">
-          <div className="mobile-menu__inner">{menus.map((item) => renderMobileMenu(item))}</div>
+          <div className="mobile-menu__inner">
+            {menus.map((item) => renderMobileMenu(item))}
+          </div>
         </div>
       ) : null}
     </>
