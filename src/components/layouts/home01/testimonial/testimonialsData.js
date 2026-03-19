@@ -2,6 +2,10 @@ import testimonialImg1 from "../../../../assets/images/testimonial/001.jpg";
 import testimonialImg2 from "../../../../assets/images/testimonial/002.jpg";
 import testimonialImg3 from "../../../../assets/images/testimonial/003.jpg";
 import testimonialImg4 from "../../../../assets/images/testimonial/004.jpg";
+import testimonialImg5 from "../../../../assets/images/testimonial/005.jpg";
+import testimonialImg6 from "../../../../assets/images/testimonial/006.jpg";
+import testimonialImg7 from "../../../../assets/images/testimonial/007.jpg";
+import testimonialImg8 from "../../../../assets/images/testimonial/008.jpg";
 
 const testimonialsData = [
   {
@@ -66,7 +70,7 @@ I feel fortunate to have worked under his guidance, and I can confidently say th
   },
   {
     id: 5,
-    img: testimonialImg1,
+    img: testimonialImg5,
     name: "G Gautami",
     headline: "Software Engineer @ Zensar Technologies",
     meta: "June 25, 2020, G and Shubham studied together",
@@ -78,7 +82,7 @@ I feel fortunate to have worked under his guidance, and I can confidently say th
   },
   {
     id: 6,
-    img: testimonialImg2,
+    img: testimonialImg6,
     name: "Luis Octavio Ramirez Cruz",
     headline: "Salesforce Developer",
     meta: "June 18, 2020, Luis Octavio and Shubham studied together",
@@ -90,7 +94,7 @@ I feel fortunate to have worked under his guidance, and I can confidently say th
   },
   {
     id: 7,
-    img: testimonialImg3,
+    img: testimonialImg7,
     name: "Kajal Rajwade",
     headline: "Data-Driven Problem Solver | Associate Lead at ZS",
     meta: "May 30, 2020, Kajal and Shubham studied together",
@@ -102,7 +106,7 @@ I feel fortunate to have worked under his guidance, and I can confidently say th
   },
   {
     id: 8,
-    img: testimonialImg4,
+    img: testimonialImg8,
     name: "Nakitto Catherine",
     headline:
       "Founder abAccess | Designing accessible healthcare systems for Africa",
