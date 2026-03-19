@@ -57,7 +57,7 @@ export default function Banner() {
           </h1>
 
           <p className="hero__subtitle">
-            Hi, I’m <strong>Shubham Raj</strong> — a
+            Hi, I’m <strong>Shubham Raj</strong> — a{" "}
             <strong className="role-text">{currentRole}</strong> with
             <span className="inline-highlight">6.5+ years</span> of experience
             building enterprise-grade web applications using
