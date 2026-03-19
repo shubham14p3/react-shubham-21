@@ -2,7 +2,47 @@
   "hash": "fc831c1c",
   "configHash": "3b465e5c",
   "lockfileHash": "a1dd37ca",
-  "browserHash": "cb0141bf",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "6ccc1e44",
+  "optimized": {
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "46262e71",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "b3d1b3c4",
+      "needsInterop": false
+    },
+    "react-slick": {
+      "src": "../../node_modules/react-slick/lib/index.js",
+      "file": "react-slick.js",
+      "fileHash": "ab67c68b",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "23b77e7b",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "6f9c8df1",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "react-BQO5LU4N": {
+      "file": "react-BQO5LU4N.js",
+      "isDynamicEntry": false
+    },
+    "react-dom-Bz8A53j6": {
+      "file": "react-dom-Bz8A53j6.js",
+      "isDynamicEntry": false
+    }
+  }
 }

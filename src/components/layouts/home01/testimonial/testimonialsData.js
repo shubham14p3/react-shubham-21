@@ -1,11 +1,11 @@
-import testimonialImg1 from "../../../../assets/images/testimonial/001.jpg";
-import testimonialImg2 from "../../../../assets/images/testimonial/002.jpg";
-import testimonialImg3 from "../../../../assets/images/testimonial/003.jpg";
-import testimonialImg4 from "../../../../assets/images/testimonial/004.jpg";
-import testimonialImg5 from "../../../../assets/images/testimonial/005.jpg";
-import testimonialImg6 from "../../../../assets/images/testimonial/006.jpg";
-import testimonialImg7 from "../../../../assets/images/testimonial/007.jpg";
-import testimonialImg8 from "../../../../assets/images/testimonial/008.jpg";
+import testimonialImg1 from "../../../../assets/images/testimonial/01.jpg";
+import testimonialImg2 from "../../../../assets/images/testimonial/02.jpg";
+import testimonialImg3 from "../../../../assets/images/testimonial/03.jpg";
+import testimonialImg4 from "../../../../assets/images/testimonial/04.jpg";
+import testimonialImg5 from "../../../../assets/images/testimonial/05.jpg";
+import testimonialImg6 from "../../../../assets/images/testimonial/06.jpg";
+import testimonialImg7 from "../../../../assets/images/testimonial/07.jpg";
+import testimonialImg8 from "../../../../assets/images/testimonial/08.jpg";
 
 const testimonialsData = [
   {
