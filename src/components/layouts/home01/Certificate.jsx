@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Certificate.css";
 import udemy from "../../../assets/images/logo/udemy.png";
 import istqb from "../../../assets/images/logo/istqb.png";
 import iabac from "../../../assets/images/logo/iabac.png";

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import menus from "../menus";
 import "./Header.css";
 
@@ -6,25 +7,25 @@ const socialLinks = [
   {
     id: "facebook",
     href: "https://www.facebook.com/shubham14p3",
-    icon: "fa-facebook",
+    icon: "fa-brands fa-facebook-f",
     label: "Facebook",
   },
   {
     id: "linkedin",
     href: "https://www.linkedin.com/in/shubham14p3/",
-    icon: "fa-linkedin",
+    icon: "fa-brands fa-linkedin-in",
     label: "LinkedIn",
   },
   {
     id: "github",
     href: "https://github.com/shubham14p3",
-    icon: "fa-github",
+    icon: "fa-brands fa-github",
     label: "GitHub",
   },
   {
     id: "whatsapp",
     href: "https://wa.me/918092766575",
-    icon: "fa-whatsapp",
+    icon: "fa-brands fa-whatsapp",
     label: "WhatsApp",
   },
 ];
@@ -71,8 +72,13 @@ function isMenuActive(item, activeId) {
 }
 
 export default function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeId, setActiveId] = useState(window.location.hash || "#home");
+  const [activeId, setActiveId] = useState(
+    location.pathname === "/" ? window.location.hash || "#home" : location.pathname
+  );
   const [mobileExpanded, setMobileExpanded] = useState({});
   const [wordIndex, setWordIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -80,6 +86,10 @@ export default function Header() {
   const [isReady, setIsReady] = useState(false);
 
   const internalHrefs = useMemo(() => getAllInternalHrefs(menus), []);
+  const sectionHrefs = useMemo(
+    () => internalHrefs.filter((href) => href.startsWith("#")),
+    [internalHrefs]
+  );
 
   useEffect(() => {
     setIsReady(true);
@@ -123,6 +133,13 @@ export default function Header() {
   }, [mobileOpen]);
 
   useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveId(location.pathname);
+      return;
+    }
+
+    setActiveId(window.location.hash || "#home");
+
     const handleHashChange = () => {
       setActiveId(window.location.hash || "#home");
     };
@@ -132,9 +149,11 @@ export default function Header() {
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
+    if (location.pathname !== "/") return;
+
     const handleScroll = () => {
       const header = document.querySelector(".site-header");
       const headerHeight = header?.offsetHeight ?? 84;
@@ -142,7 +161,7 @@ export default function Header() {
 
       let currentSection = window.location.hash || "#home";
 
-      for (const href of internalHrefs) {
+      for (const href of sectionHrefs) {
         const section = document.querySelector(href);
         if (!section) continue;
 
@@ -163,16 +182,30 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [internalHrefs]);
+  }, [sectionHrefs, location.pathname]);
 
   const handleNavClick = (href, external = false) => (event) => {
     if (external) return;
 
     event.preventDefault();
+
+    if (href.startsWith("#")) {
+      setActiveId(href);
+      setMobileOpen(false);
+
+      if (location.pathname !== "/") {
+        navigate(`/${href}`);
+        return;
+      }
+
+      window.location.hash = href;
+      scrollToSection(href);
+      return;
+    }
+
     setActiveId(href);
-    window.location.hash = href;
-    scrollToSection(href);
     setMobileOpen(false);
+    navigate(href);
   };
 
   const toggleMobileGroup = (key) => {
@@ -215,22 +248,24 @@ export default function Header() {
     return (
       <div
         key={item.id}
-        className={`nav-dropdown nav-dropdown--level-${level} ${
-          isMenuActive(item, activeId) ? "active" : ""
-        }`}
+        className={`nav-dropdown nav-dropdown--level-${level} ${isMenuActive(item, activeId) ? "active" : ""
+          }`}
       >
         <button type="button" className="nav-dropdown__trigger">
           <span>{item.label}</span>
-          <i className="fa fa-angle-down" aria-hidden="true" />
+          <i className="fa-solid fa-angle-down" aria-hidden="true" />
         </button>
 
         <div className="nav-dropdown__menu">
           {item.children.map((child) =>
             child.children ? (
               <div key={child.id} className="nav-dropdown nav-dropdown--nested">
-                <button type="button" className="nav-dropdown__item nav-dropdown__item--trigger">
+                <button
+                  type="button"
+                  className="nav-dropdown__item nav-dropdown__item--trigger"
+                >
                   <span>{child.label}</span>
-                  <i className="fa fa-angle-right" aria-hidden="true" />
+                  <i className="fa-solid fa-angle-right" aria-hidden="true" />
                 </button>
 
                 <div className="nav-dropdown__submenu">
@@ -239,9 +274,8 @@ export default function Header() {
                       key={grandChild.id}
                       href={grandChild.href}
                       onClick={handleNavClick(grandChild.href)}
-                      className={`nav-dropdown__item ${
-                        grandChild.href === activeId ? "active" : ""
-                      }`}
+                      className={`nav-dropdown__item ${grandChild.href === activeId ? "active" : ""
+                        }`}
                     >
                       {grandChild.label}
                     </a>
@@ -253,7 +287,8 @@ export default function Header() {
                 key={child.id}
                 href={child.href}
                 onClick={handleNavClick(child.href)}
-                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""}`}
+                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""
+                  }`}
               >
                 {child.label}
               </a>
@@ -300,14 +335,13 @@ export default function Header() {
       <div key={item.id} className="mobile-nav-group">
         <button
           type="button"
-          className={`mobile-nav-link mobile-nav-link--group ${
-            isMenuActive(item, activeId) ? "active" : ""
-          }`}
+          className={`mobile-nav-link mobile-nav-link--group ${isMenuActive(item, activeId) ? "active" : ""
+            }`}
           onClick={() => toggleMobileGroup(path)}
         >
           <span>{item.label}</span>
           <i
-            className={`fa ${expanded ? "fa-angle-up" : "fa-angle-down"}`}
+            className={`fa-solid ${expanded ? "fa-angle-up" : "fa-angle-down"}`}
             aria-hidden="true"
           />
         </button>
@@ -324,7 +358,7 @@ export default function Header() {
   return (
     <>
       <header className="site-header" aria-label="Main navigation">
-        <div className="container-shell site-header__inner">
+        <div className="navbar-container-shell site-header__inner">
           <a
             href="#home"
             className="site-brand"
@@ -360,7 +394,7 @@ export default function Header() {
                   className="icon-link"
                   aria-label={item.label}
                 >
-                  <i className={`fa ${item.icon}`} aria-hidden="true" />
+                  <i className={item.icon} aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -372,7 +406,10 @@ export default function Header() {
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((prev) => !prev)}
             >
-              <i className={`fa ${mobileOpen ? "fa-times" : "fa-bars"}`} />
+              <i
+                className={mobileOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}
+                aria-hidden="true"
+              />
             </button>
           </div>
         </div>
@@ -380,7 +417,9 @@ export default function Header() {
 
       {mobileOpen ? (
         <div className="mobile-menu" role="dialog" aria-label="Mobile navigation">
-          <div className="mobile-menu__inner">{menus.map((item) => renderMobileMenu(item))}</div>
+          <div className="mobile-menu__inner">
+            {menus.map((item) => renderMobileMenu(item))}
+          </div>
         </div>
       ) : null}
     </>

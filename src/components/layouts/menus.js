@@ -43,28 +43,28 @@ const menus = [
   //         {
   //           id: "loader-neo-orbit",
   //           label: "Neo Orbit",
-  //           href: "#loader-neo-orbit",
+  //           href: "/loader/neo-orbit",
   //         },
   //         {
   //           id: "loader-terminal-boot",
   //           label: "Terminal Boot",
-  //           href: "#loader-terminal-boot",
+  //           href: "/loader/terminal-boot",
   //         },
   //         {
   //           id: "loader-glass-reveal",
   //           label: "Glass Reveal",
-  //           href: "#loader-glass-reveal",
+  //           href: "/loader/glass-reveal",
   //         },
   //         {
   //           id: "loader-node-network",
   //           label: "Node Network",
-  //           href: "#loader-node-network",
+  //           href: "/loader/node-network",
   //         },
-  //         {
-  //           id: "loader-combined",
-  //           label: "Combined",
-  //           href: "#loader-combined",
-  //         },
+  //         // {
+  //         //   id: "loader-combined",
+  //         //   label: "Combined",
+  //         //   href: "/loader/combined",
+  //         // },
   //       ],
   //     },
   //   ],
