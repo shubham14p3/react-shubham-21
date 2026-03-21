@@ -32,43 +32,54 @@ const menus = [
     label: "Testimonial",
     href: "#recommendations",
   },
-  // {
-  //   id: "components",
-  //   label: "Components",
-  //   children: [
-  //     {
-  //       id: "loaders",
-  //       label: "Loaders",
-  //       children: [
-  //         {
-  //           id: "loader-neo-orbit",
-  //           label: "Neo Orbit",
-  //           href: "/loader/neo-orbit",
-  //         },
-  //         {
-  //           id: "loader-terminal-boot",
-  //           label: "Terminal Boot",
-  //           href: "/loader/terminal-boot",
-  //         },
-  //         {
-  //           id: "loader-glass-reveal",
-  //           label: "Glass Reveal",
-  //           href: "/loader/glass-reveal",
-  //         },
-  //         {
-  //           id: "loader-node-network",
-  //           label: "Node Network",
-  //           href: "/loader/node-network",
-  //         },
-  //         // {
-  //         //   id: "loader-combined",
-  //         //   label: "Combined",
-  //         //   href: "/loader/combined",
-  //         // },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    id: "components",
+    label: "Components",
+    children: [
+      {
+        id: "games",
+        label: "Games",
+        children: [
+          {
+            id: "loader-neo-orbit",
+            label: "Neo Orbit",
+            href: "/loader/neo-orbit",
+          }
+        ],
+      },
+      {
+        id: "loaders",
+        label: "Loaders",
+        children: [
+          {
+            id: "loader-neo-orbit",
+            label: "Neo Orbit",
+            href: "/loader/neo-orbit",
+          },
+          {
+            id: "loader-terminal-boot",
+            label: "Terminal Boot",
+            href: "/loader/terminal-boot",
+          },
+          {
+            id: "loader-glass-reveal",
+            label: "Glass Reveal",
+            href: "/loader/glass-reveal",
+          },
+          {
+            id: "loader-node-network",
+            label: "Node Network",
+            href: "/loader/node-network",
+          },
+          // {
+          //   id: "loader-combined",
+          //   label: "Combined",
+          //   href: "/loader/combined",
+          // },
+        ],
+      },
+    ],
+  },
   {
     id: "resume",
     label: "Resume",
