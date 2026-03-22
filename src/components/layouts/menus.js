@@ -41,10 +41,60 @@ const menus = [
         label: "Games",
         children: [
           {
-            id: "loader-neo-orbit",
-            label: "Neo Orbit",
-            href: "/loader/neo-orbit",
-          }
+            id: "game-tic-tac-toe",
+            label: "Tic Tac Toe",
+            href: "/game/tic-tac-toe",
+          },
+          {
+            id: "game-connect-four",
+            label: "Connect Four",
+            href: "/game/ConnectFour",
+          },
+          {
+            id: "game-2048",
+            label: "2048",
+            href: "/game/Game2048",
+          },
+          {
+            id: "game-hangman",
+            label: "Hangman",
+            href: "/game/Hangman",
+          },
+          {
+            id: "game-memory-match",
+            label: "Memory Match",
+            href: "/game/MemoryMatch",
+          },
+          {
+            id: "game-minesweeper",
+            label: "Minesweeper",
+            href: "/game/Minesweeper",
+          },
+          {
+            id: "game-rock-paper-scissors",
+            label: "Rock Paper Scissors",
+            href: "/game/RockPaperScissors",
+          },
+          {
+            id: "game-sliding-puzzle",
+            label: "Sliding Puzzle",
+            href: "/game/SlidingPuzzle",
+          },
+          {
+            id: "game-snake",
+            label: "Snake",
+            href: "/game/Snake",
+          },
+          {
+            id: "game-sudoku",
+            label: "Sudoku",
+            href: "/game/Sudoku",
+          },
+          {
+            id: "game-word-guess",
+            label: "Word Guess",
+            href: "/game/WordGuess",
+          },
         ],
       },
       {

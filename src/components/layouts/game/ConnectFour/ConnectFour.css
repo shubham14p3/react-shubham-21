@@ -1,0 +1,565 @@
+.connect-four-page {
+  min-height: 80vh;
+  padding: 50px 16px 84px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(34, 211, 238, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #071120 0%, #0a1628 100%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.connect-four-shell {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+}
+
+.connect-four-hero {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.connect-four-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #67e8f9;
+  background: rgba(103, 232, 249, 0.08);
+  border: 1px solid rgba(103, 232, 249, 0.16);
+}
+
+.connect-four-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1.05;
+  color: #f8fafc;
+}
+
+.connect-four-copy {
+  width: min(680px, 100%);
+  margin: 10px auto 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #94a3b8;
+}
+
+.connect-four-card {
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(9, 18, 33, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(2, 8, 23, 0.34);
+  border-radius: 24px;
+}
+
+.connect-four-card__head h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  color: #f8fafc;
+}
+
+.connect-four-card__head p {
+  margin: 6px 0 0;
+  color: #94a3b8;
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+.connect-four-setup-card {
+  width: min(620px, 100%);
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.connect-four-form {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.connect-four-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.connect-four-field span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.connect-four-field input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f8fafc;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.connect-four-field input:focus {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.12);
+}
+
+.connect-four-form button {
+  align-self: center;
+}
+
+.connect-four-game-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.connect-four-sidebar,
+.connect-four-board-card {
+  padding: 18px;
+}
+
+.connect-four-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.connect-four-player-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.connect-four-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.connect-four-player.is-active {
+  border-color: rgba(103, 232, 249, 0.4);
+  background: rgba(8, 47, 73, 0.35);
+  transform: translateY(-2px);
+}
+
+.connect-four-player__disc {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+}
+
+.connect-four-player__disc.is-player {
+  background: linear-gradient(135deg, #facc15, #f97316);
+}
+
+.connect-four-player__disc.is-computer {
+  background: linear-gradient(135deg, #67e8f9, #818cf8);
+}
+
+.connect-four-player__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.connect-four-player__meta strong {
+  color: #f8fafc;
+  font-size: 0.94rem;
+}
+
+.connect-four-player__meta span {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.connect-four-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.connect-four-stat {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.connect-four-stat span {
+  display: block;
+  font-size: 0.74rem;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.connect-four-stat strong {
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.connect-four-help {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.connect-four-help > span {
+  display: block;
+  font-size: 0.74rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+.connect-four-help ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #cbd5e1;
+}
+
+.connect-four-help li {
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.connect-four-side-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.connect-four-board-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.connect-four-board-card__top {
+  margin-bottom: 16px;
+}
+
+.connect-four-status-label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #67e8f9;
+}
+
+.connect-four-status {
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  line-height: 1.25;
+}
+
+.connect-four-column-buttons {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.connect-four-column-button {
+  min-height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.82);
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.connect-four-column-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(103, 232, 249, 0.35);
+}
+
+.connect-four-column-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.connect-four-board {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding: 14px;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.96),
+    rgba(15, 23, 42, 0.98)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.connect-four-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  background: rgba(8, 15, 28, 0.92);
+  display: grid;
+  place-items: center;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.connect-four-cell.is-winning {
+  box-shadow:
+    0 0 0 2px rgba(103, 232, 249, 0.3),
+    0 0 24px rgba(103, 232, 249, 0.14);
+}
+
+.connect-four-disc {
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  display: block;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+}
+
+.connect-four-disc.is-empty {
+  background: rgba(51, 65, 85, 0.68);
+}
+
+.connect-four-disc.is-player {
+  background: linear-gradient(135deg, #facc15, #f97316);
+  box-shadow:
+    inset 0 6px 10px rgba(255, 255, 255, 0.18),
+    0 10px 18px rgba(249, 115, 22, 0.22);
+}
+
+.connect-four-disc.is-computer {
+  background: linear-gradient(135deg, #67e8f9, #818cf8);
+  box-shadow:
+    inset 0 6px 10px rgba(255, 255, 255, 0.18),
+    0 10px 18px rgba(99, 102, 241, 0.22);
+}
+
+.connect-four-result-banner {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid rgba(103, 232, 249, 0.14);
+  background: rgba(8, 47, 73, 0.28);
+}
+
+.connect-four-result-banner__content h3 {
+  margin: 0 0 6px;
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.connect-four-result-banner__content p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.connect-four-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.86rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.connect-four-btn:hover {
+  transform: translateY(-1px);
+}
+
+.connect-four-btn--primary {
+  color: #0f172a;
+  background: linear-gradient(135deg, #67e8f9, #818cf8);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.22);
+}
+
+.connect-four-btn--secondary {
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.connect-four-btn--ghost {
+  color: #cbd5e1;
+  background: transparent;
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+@media (min-width: 981px) {
+  .connect-four-page.is-game-active {
+    height: 100vh;
+  }
+
+  .connect-four-page.is-game-active .connect-four-shell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .connect-four-page {
+    min-height: auto;
+    padding: 50px 16px 104px;
+    overflow: visible;
+    display: block;
+  }
+
+  .connect-four-game-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .connect-four-page {
+    padding: 86px 12px 108px;
+  }
+
+  .connect-four-title {
+    font-size: 1.75rem;
+  }
+
+  .connect-four-copy {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .connect-four-setup-card,
+  .connect-four-sidebar,
+  .connect-four-board-card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .connect-four-field input {
+    height: 46px;
+    font-size: 0.92rem;
+    border-radius: 12px;
+  }
+
+  .connect-four-stats {
+    gap: 8px;
+  }
+
+  .connect-four-column-buttons,
+  .connect-four-board {
+    gap: 8px;
+  }
+
+  .connect-four-column-button {
+    min-height: 38px;
+    border-radius: 10px;
+  }
+
+  .connect-four-board {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .connect-four-cell {
+    border-radius: 14px;
+  }
+
+  .connect-four-btn {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+    border-radius: 11px;
+  }
+
+  .connect-four-result-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+  .connect-four-page {
+    padding: 40px 10px 112px;
+  }
+
+  .connect-four-title {
+    font-size: 1.55rem;
+  }
+
+  .connect-four-copy {
+    font-size: 0.84rem;
+  }
+
+  .connect-four-setup-card,
+  .connect-four-sidebar,
+  .connect-four-board-card {
+    padding: 14px;
+  }
+
+  .connect-four-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-four-column-buttons,
+  .connect-four-board {
+    gap: 6px;
+  }
+
+  .connect-four-board {
+    padding: 8px;
+  }
+}

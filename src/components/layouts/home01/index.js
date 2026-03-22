@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../Header/Header";
 import Banner from "./Banner";
 // import Testimonial from "./Testimonial";
 import Testimonial from "./testimonial/Testimonial";
@@ -8,7 +8,7 @@ import Specilizing from "./Specilizing";
 import Portfolio from "./Portfolio";
 import Education from "./Education";
 import Certificate from "./Certificate";
-import Footer from "./Footer";
+import Footer from "../Footer/Footer";
 
 export {
   Header,
