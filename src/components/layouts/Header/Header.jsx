@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import menus from "../menus";
 import "./Header.css";
@@ -74,12 +74,16 @@ function isMenuActive(item, activeId) {
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+  const headerRef = useRef(null);
+  const dropdownRefs = useRef({});
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState(
     location.pathname === "/" ? window.location.hash || "#home" : location.pathname
   );
   const [mobileExpanded, setMobileExpanded] = useState({});
+  const [desktopOpenPath, setDesktopOpenPath] = useState("");
+  const [submenuDirection, setSubmenuDirection] = useState({});
   const [wordIndex, setWordIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -184,14 +188,36 @@ export default function Header() {
     };
   }, [sectionHrefs, location.pathname]);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!headerRef.current?.contains(event.target)) {
+        setDesktopOpenPath("");
+      }
+    };
+
+    const handleResize = () => {
+      setDesktopOpenPath("");
+      setSubmenuDirection({});
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleNavClick = (href, external = false) => (event) => {
     if (external) return;
 
     event.preventDefault();
+    setDesktopOpenPath("");
+    setMobileOpen(false);
 
     if (href.startsWith("#")) {
       setActiveId(href);
-      setMobileOpen(false);
 
       if (location.pathname !== "/") {
         navigate(`/${href}`);
@@ -204,7 +230,6 @@ export default function Header() {
     }
 
     setActiveId(href);
-    setMobileOpen(false);
     navigate(href);
   };
 
@@ -215,7 +240,33 @@ export default function Header() {
     }));
   };
 
-  const renderDesktopMenu = (item, level = 0) => {
+  const toggleDesktopMenu = (path) => {
+    setDesktopOpenPath((prev) => (prev === path ? "" : path));
+  };
+
+  const registerDropdownRef = (path, node) => {
+    if (node) {
+      dropdownRefs.current[path] = node;
+    }
+  };
+
+  const detectSubmenuDirection = (path) => {
+    const node = dropdownRefs.current[path];
+    if (!node) return;
+
+    const rect = node.getBoundingClientRect();
+    const estimatedWidth = 240;
+    const viewportWidth = window.innerWidth;
+    const spaceRight = viewportWidth - rect.right;
+    const shouldOpenLeft = spaceRight < estimatedWidth + 24;
+
+    setSubmenuDirection((prev) => ({
+      ...prev,
+      [path]: shouldOpenLeft ? "left" : "right",
+    }));
+  };
+
+  const renderDesktopMenu = (item, level = 0, path = item.id) => {
     if (item.external) {
       return (
         <a
@@ -245,55 +296,96 @@ export default function Header() {
       );
     }
 
+    const isOpen =
+      desktopOpenPath === path || desktopOpenPath.startsWith(`${path}__`);
+    const direction = submenuDirection[path] || "right";
+
     return (
       <div
         key={item.id}
-        className={`nav-dropdown nav-dropdown--level-${level} ${isMenuActive(item, activeId) ? "active" : ""
-          }`}
+        ref={(node) => registerDropdownRef(path, node)}
+        className={`nav-dropdown nav-dropdown--level-${level} ${
+          isMenuActive(item, activeId) ? "active" : ""
+        } ${isOpen ? "is-open" : ""} ${
+          direction === "left" ? "opens-left" : ""
+        }`}
+        onMouseEnter={() => detectSubmenuDirection(path)}
       >
-        <button type="button" className="nav-dropdown__trigger">
+        <button
+          type="button"
+          className="nav-dropdown__trigger"
+          onClick={() => toggleDesktopMenu(path)}
+          aria-expanded={isOpen}
+        >
           <span>{item.label}</span>
-          <i className="fa-solid fa-angle-down" aria-hidden="true" />
+          <i
+            className={`fa-solid ${isOpen ? "fa-angle-up" : "fa-angle-down"}`}
+            aria-hidden="true"
+          />
         </button>
 
         <div className="nav-dropdown__menu">
-          {item.children.map((child) =>
-            child.children ? (
-              <div key={child.id} className="nav-dropdown nav-dropdown--nested">
-                <button
-                  type="button"
-                  className="nav-dropdown__item nav-dropdown__item--trigger"
-                >
-                  <span>{child.label}</span>
-                  <i className="fa-solid fa-angle-right" aria-hidden="true" />
-                </button>
+          {item.children.map((child) => {
+            const childPath = `${path}__${child.id}`;
 
-                <div className="nav-dropdown__submenu">
-                  {child.children.map((grandChild) => (
-                    <a
-                      key={grandChild.id}
-                      href={grandChild.href}
-                      onClick={handleNavClick(grandChild.href)}
-                      className={`nav-dropdown__item ${grandChild.href === activeId ? "active" : ""
+            if (child.children) {
+              const childOpen = desktopOpenPath === childPath;
+              const childDirection = submenuDirection[childPath] || "right";
+
+              return (
+                <div
+                  key={child.id}
+                  ref={(node) => registerDropdownRef(childPath, node)}
+                  className={`nav-dropdown nav-dropdown--nested ${
+                    childOpen ? "is-open" : ""
+                  } ${childDirection === "left" ? "opens-left" : ""}`}
+                  onMouseEnter={() => detectSubmenuDirection(childPath)}
+                >
+                  <button
+                    type="button"
+                    className="nav-dropdown__item nav-dropdown__item--trigger"
+                    onClick={() => toggleDesktopMenu(childPath)}
+                  >
+                    <span>{child.label}</span>
+                    <i
+                      className={`fa-solid ${
+                        childDirection === "left" ? "fa-angle-left" : "fa-angle-right"
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+
+                  <div className="nav-dropdown__submenu">
+                    {child.children.map((grandChild) => (
+                      <a
+                        key={grandChild.id}
+                        href={grandChild.href}
+                        onClick={handleNavClick(grandChild.href)}
+                        className={`nav-dropdown__item ${
+                          grandChild.href === activeId ? "active" : ""
                         }`}
-                    >
-                      {grandChild.label}
-                    </a>
-                  ))}
+                      >
+                        {grandChild.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : (
+              );
+            }
+
+            return (
               <a
                 key={child.id}
                 href={child.href}
                 onClick={handleNavClick(child.href)}
-                className={`nav-dropdown__item ${child.href === activeId ? "active" : ""
-                  }`}
+                className={`nav-dropdown__item ${
+                  child.href === activeId ? "active" : ""
+                }`}
               >
                 {child.label}
               </a>
-            )
-          )}
+            );
+          })}
         </div>
       </div>
     );
@@ -335,8 +427,9 @@ export default function Header() {
       <div key={item.id} className="mobile-nav-group">
         <button
           type="button"
-          className={`mobile-nav-link mobile-nav-link--group ${isMenuActive(item, activeId) ? "active" : ""
-            }`}
+          className={`mobile-nav-link mobile-nav-link--group ${
+            isMenuActive(item, activeId) ? "active" : ""
+          }`}
           onClick={() => toggleMobileGroup(path)}
         >
           <span>{item.label}</span>
@@ -348,7 +441,7 @@ export default function Header() {
 
         {expanded ? (
           <div className="mobile-nav-children">
-            {item.children.map((child) => renderMobileMenu(child, `${path}-${child.id}`))}
+            {item.children.map((child) => renderMobileMenu(child, `${path}__${child.id}`))}
           </div>
         ) : null}
       </div>
@@ -357,7 +450,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="site-header" aria-label="Main navigation">
+      <header ref={headerRef} className="site-header" aria-label="Main navigation">
         <div className="navbar-container-shell site-header__inner">
           <a
             href="#home"
