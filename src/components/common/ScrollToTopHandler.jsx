@@ -9,6 +9,7 @@ export default function ScrollToTopHandler() {
       window.history.scrollRestoration = "manual";
     }
 
+    if (window.location.hash) return;
     window.scrollTo({
       top: 0,
       left: 0,

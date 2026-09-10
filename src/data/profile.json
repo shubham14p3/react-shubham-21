@@ -1,0 +1,92 @@
+{
+  "name": "Shubham Raj",
+  "headline": "Senior Frontend Engineer",
+  "experience": "6+",
+  "location": "Mexico City, Mexico",
+  "email": "shubham14p3@gmail.com",
+  "phone": "+91 80927 66575",
+  "website": "https://shubhamraj.dev",
+  "github": "https://github.com/shubham14p3",
+  "linkedin": "https://www.linkedin.com/in/shubham14p3/",
+  "summary": "Frontend engineer with 6+ years of professional software experience across banking, payments, and enterprise products. I build thoughtful interfaces with React, TypeScript, and Next.js, connecting reusable architecture with performance, accessibility, and clear user journeys. Currently a Senior Associate Consultant at Infosys, supporting Visa in Mexico City.",
+  "roles": [
+    {
+      "company": "Infosys",
+      "title": "Senior Associate Consultant",
+      "dates": "Dec 2024 - Present",
+      "location": "Bengaluru / Mexico City",
+      "clients": "Visa (current) / Citi (previous)",
+      "summary": "Enterprise frontend engineering across payments and banking.",
+      "bullets": [
+        "Contribute to Visa enterprise products in a shared monorepo using React, TypeScript, and modern frontend architecture; coordinate changes across projects and teams.",
+        "Delivered 20+ interactive features for Citi using React, TypeScript, and Next.js, including dashboard graphs and data visualizations.",
+        "Reduced unnecessary re-renders by 35% and improved page load performance by 40% through state optimization, code splitting, and lazy loading on the Citi engagement.",
+        "Mentored 3 junior developers and collaborated with product owners, QA, and DevOps to support 90% on-time delivery in two-week sprints.",
+        "Review code, assess dependencies and vulnerabilities, and develop proofs of concept; use Claude Code and GitHub Copilot with engineering review and validation."
+      ],
+      "stack": ["React", "TypeScript", "Next.js", "Redux Toolkit", "React Query", "Monorepos"]
+    },
+    {
+      "company": "Capgemini",
+      "title": "Consultant",
+      "dates": "May 2021 - Dec 2024",
+      "location": "Kolkata, India",
+      "clients": "Discover Bank / Abu Dhabi Bank",
+      "summary": "Reusable banking interfaces, faster loads, and stronger release quality.",
+      "bullets": [
+        "Designed and delivered 50+ user-facing features with React, Redux, TypeScript, Vite, and Material UI for financial services applications.",
+        "Refactored 30+ components and improved loading performance by 35% through API optimization and more efficient state management.",
+        "Tested and optimized 140+ components for cross-browser compatibility; used Jest and React Testing Library for regression coverage.",
+        "Collaborated with backend, design, product, and QA teams; contributed code reviews, ESLint and SonarQube checks, and CI/CD configuration."
+      ],
+      "stack": ["React", "Redux", "TypeScript", "Material UI", "Jest", "CI/CD"]
+    },
+    {
+      "company": "Gammastack",
+      "title": "Solution Engineer",
+      "dates": "May 2020 - Aug 2020",
+      "location": "Indore, India",
+      "clients": "Product engineering",
+      "summary": "Data-driven applications, from reusable UI to deployment.",
+      "bullets": [
+        "Built data-driven applications with React and Next.js, including responsive components and server-side rendering.",
+        "Integrated REST APIs with authentication and validation, and supported cloud deployments and critical-feature testing."
+      ],
+      "stack": ["React", "Next.js", "REST APIs", "Material UI", "Jest"]
+    },
+    {
+      "company": "Nagravision",
+      "title": "Software Engineer",
+      "dates": "Jul 2018 - Jul 2019",
+      "location": "Bengaluru, India",
+      "clients": "Quality engineering",
+      "summary": "An early foundation in testing, automation, and product reliability.",
+      "bullets": [
+        "Authored 350+ JavaScript tests and integrated automation into Jenkins build pipelines.",
+        "Performed UI regression and device testing, coordinated with development teams, and documented test plans and execution results."
+      ],
+      "stack": ["JavaScript", "Test automation", "Jenkins", "Regression testing"]
+    }
+  ],
+  "skillGroups": [
+    {"title": "Interface engineering", "items": ["React", "TypeScript", "JavaScript", "Next.js", "HTML", "CSS", "Material UI"]},
+    {"title": "Architecture & performance", "items": ["Redux Toolkit", "React Query", "Design systems", "Reusable components", "Code splitting", "Monorepos"]},
+    {"title": "Quality & delivery", "items": ["Jest", "React Testing Library", "Accessibility", "Git", "Jenkins", "CI/CD", "Code reviews"]},
+    {"title": "AI-assisted development", "items": ["Claude Code", "GitHub Copilot", "Gemini", "Human-reviewed implementation"]}
+  ],
+  "education": [
+    {"school": "Indian Institute of Technology, Jodhpur", "degree": "M.Tech in Data Engineering"},
+    {"school": "Bhilai Institute of Technology, Bhilai", "degree": "B.E. in Computer Science & Engineering", "dates": "2014 - 2018"}
+  ],
+  "certifications": [
+    {"name": "Salesforce JavaScript Developer I", "issuer": "Salesforce", "date": "Jun 2025", "type": "Certification"},
+    {"name": "ISTQB Foundation Level", "issuer": "ISTQB", "date": "Dec 2018", "type": "Certification"},
+    {"name": "Certified Data Scientist", "issuer": "IABAC", "date": "Apr 2019", "type": "Certification"},
+    {"name": "Data Science Foundation", "issuer": "IABAC", "date": "Feb 2019", "type": "Certification"},
+    {"name": "M001: MongoDB Basics", "issuer": "MongoDB University", "date": "Mar 2021", "type": "Course"},
+    {"name": "MERN Fullstack Project", "issuer": "Udemy", "date": "Sep 2023", "type": "Course"},
+    {"name": "JavaScript Module", "issuer": "Microverse", "date": "Aug 2020", "type": "Module"},
+    {"name": "Ruby on Rails Module", "issuer": "Microverse", "date": "Aug 2020", "type": "Module"},
+    {"name": "Startup India Learning Program", "issuer": "upGrad", "date": "Feb 2017", "type": "Program"}
+  ]
+}
