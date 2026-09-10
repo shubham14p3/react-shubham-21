@@ -1,103 +1,26 @@
-:root {
-  --bg: #081120;
-  --bg-soft: #0f172a;
-  --surface: rgba(15, 23, 42, 0.72);
-  --surface-2: rgba(30, 41, 59, 0.72);
-  --card: rgba(255, 255, 255, 0.06);
-  --card-strong: rgba(255, 255, 255, 0.1);
-  --text: #e5eefb;
-  --muted: #9fb2cc;
-  --line: rgba(255, 255, 255, 0.12);
-  --brand: #60a5fa;
-  --brand-2: #22d3ee;
-  --brand-3: #a78bfa;
-  --accent: #f59e0b;
-  --success: #34d399;
-  --danger: #fb7185;
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  --radius: 24px;
-  --radius-sm: 16px;
-  --container: 1200px;
-  --header-h: 84px;
-  --section-gap: 60px;
-  --font-main:
-    Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color-scheme: dark;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  margin: 0;
-  min-height: 100%;
-  width: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 18px);
-}
-
-body {
-  font-family: var(--font-main);
-  color: var(--text);
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(96, 165, 250, 0.18),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at top right,
-      rgba(34, 211, 238, 0.14),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at bottom center,
-      rgba(167, 139, 250, 0.14),
-      transparent 26%
-    ),
-    linear-gradient(180deg, #07101d 0%, #0b1322 45%, #081120 100%);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-body.menu-open {
-  overflow: hidden;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-#root {
-  min-height: 100%;
-}
-
-::selection {
-  background: rgba(96, 165, 250, 0.35);
-  color: white;
-}
+@font-face{font-family:"DM Sans";src:url("/fonts/dm-sans-regular.woff") format("woff");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"DM Sans";src:url("/fonts/dm-sans-medium.woff") format("woff");font-style:normal;font-weight:500 600;font-display:swap}
+@font-face{font-family:"DM Sans";src:url("/fonts/dm-sans-bold.woff") format("woff");font-style:normal;font-weight:700 900;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url("/fonts/instrument-serif-italic.woff") format("woff");font-style:italic;font-weight:400;font-display:swap}
+:root{font-family:"DM Sans",Arial,sans-serif;color:#f2f3ed;background:#151715;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--ink:#151715;--paper:#f2f3ed;--lime:#d7f774;--muted:#b2b8a7;--line:#363e2d;--serif:"Instrument Serif",Georgia,serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:7rem}
+body{margin:0;min-width:280px}
+button,input,select,textarea{font:inherit}
+button,a,input,select{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer;color:inherit;border:0}
+button:disabled{cursor:default;opacity:.45}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;vertical-align:middle}
+img{display:block;height:auto}
+svg{flex-shrink:0}
+p,h1,h2,h3,h4,blockquote{margin:0}
+button,input,select{min-width:0}
+::selection{background:var(--lime);color:var(--ink)}
+:focus-visible{outline:2px solid var(--lime);outline-offset:6px}
+[hidden]{display:none!important}
+section[id],footer[id],details[id],div[id="education"]{scroll-margin-top:7rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;z-index:100;top:10px;left:10px;padding:14px 24px;background:var(--lime);color:var(--ink);transform:translateY(-180%)}
+.skip-link:focus{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

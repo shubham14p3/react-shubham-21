@@ -1,10 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route } from "react-router-dom";
-import LoaderCombined from "../components/pages/loaders/LoaderCombined";
-import LoaderNeoOrbit from "../components/pages/loaders/LoaderNeoOrbit";
-import LoaderTerminalBoot from "../components/pages/loaders/LoaderTerminalBoot";
-import LoaderGlassReveal from "../components/pages/loaders/LoaderGlassReveal";
-import LoaderNodeNetwork from "../components/pages/loaders/LoaderNodeNetwork";
+const LoaderCombined = lazy(() => import("../components/pages/loaders/LoaderCombined"));
+const LoaderNeoOrbit = lazy(() => import("../components/pages/loaders/LoaderNeoOrbit"));
+const LoaderTerminalBoot = lazy(() => import("../components/pages/loaders/LoaderTerminalBoot"));
+const LoaderGlassReveal = lazy(() => import("../components/pages/loaders/LoaderGlassReveal"));
+const LoaderNodeNetwork = lazy(() => import("../components/pages/loaders/LoaderNodeNetwork"));
 
 export default function LoaderRoutes() {
     return (

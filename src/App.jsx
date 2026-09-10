@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
 import AppRoutes from "./routes/AppRoutes";
-import LoaderSwitcher from "./components/pages/loaders/LoaderSwitcher";
 import ScrollToTopHandler from "./components/common/ScrollToTopHandler";
 
 function App() {
   return (
-    <Suspense fallback={<LoaderSwitcher />}>
+    <Suspense fallback={<p className="route-loading" role="status">Opening page…</p>}>
       <ScrollToTopHandler />
       <AppRoutes />
     </Suspense>
