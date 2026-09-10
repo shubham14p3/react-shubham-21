@@ -1,0 +1,52 @@
+{
+  "measuredAt": "2026-09-10T19:33:18.905Z",
+  "node": "v24.19.0",
+  "measurement": "Local production files and gzip encoding; not browser timings or Lighthouse scores",
+  "startupJavaScript": [
+    {
+      "file": "assets/index-6VISHDRg.js",
+      "bytes": 227403,
+      "gzipBytes": 71150
+    },
+    {
+      "file": "assets/jsx-runtime-k-awuBEX.js",
+      "bytes": 8430,
+      "gzipBytes": 3212
+    },
+    {
+      "file": "assets/chunk-BV7QT456-D3jGvw0o.js",
+      "bytes": 38637,
+      "gzipBytes": 13777
+    },
+    {
+      "file": "assets/analytics-Cyx5Wl0N.js",
+      "bytes": 300,
+      "gzipBytes": 236
+    },
+    {
+      "file": "assets/Icon-hBPHOfEE.js",
+      "bytes": 1732,
+      "gzipBytes": 684
+    }
+  ],
+  "startupJavaScriptGzipBytes": 89059,
+  "startupCss": [
+    {
+      "file": "assets/index-BIzYePwf.css",
+      "bytes": 37891,
+      "gzipBytes": 8906
+    }
+  ],
+  "startupCssGzipBytes": 8906,
+  "deferredWebGL": {
+    "file": "assets/createAtlasScene-BYPuUtJb.js",
+    "bytes": 536299,
+    "gzipBytes": 133031
+  },
+  "coreWebVitals": {
+    "LCP": "not measured",
+    "CLS": "not measured",
+    "INP": "not measured"
+  },
+  "lighthouse": "not run: approved cloud browser cannot access the supervised local preview"
+}

@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /loader/
 Sitemap: https://shubhamraj.dev/sitemap.xml

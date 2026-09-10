@@ -25,3 +25,7 @@ src_test3
 *.sln
 *.sw?
 .vite
+.ssr/
+.test-build/
+playwright-report/
+test-results/

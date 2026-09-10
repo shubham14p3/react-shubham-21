@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://shubhamraj.dev/</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://shubhamraj.dev</loc></url>
+  <url><loc>https://shubhamraj.dev/work</loc></url>
+  <url><loc>https://shubhamraj.dev/work/visa</loc></url>
+  <url><loc>https://shubhamraj.dev/work/citi</loc></url>
+  <url><loc>https://shubhamraj.dev/work/discover</loc></url>
+  <url><loc>https://shubhamraj.dev/lab</loc></url>
+  <url><loc>https://shubhamraj.dev/about</loc></url>
+  <url><loc>https://shubhamraj.dev/stack</loc></url>
+  <url><loc>https://shubhamraj.dev/recommendations</loc></url>
+  <url><loc>https://shubhamraj.dev/resume</loc></url>
+  <url><loc>https://shubhamraj.dev/contact</loc></url>
+</urlset>
